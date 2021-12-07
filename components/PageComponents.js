@@ -833,28 +833,74 @@ const HelpContainer = styled.div`
 //  end help menu
 
 // footer / bottom bar to be included on every content page
-export const Footer = () => {
+export const Footer = ({ prev, next }) => {
+  const fowardState = useIsFoward();
+
+  const handleNext = () => {
+    fowardState.setFoward();
+  };
+
+  const handlePrev = () => {
+    fowardState.setBackward();
+  };
+
+  const nextHoverEffect = () => {
+    gsap.to("#prev-nav-arrow", { opacity: 0.3 });
+  };
+
+  const nextRevokeEffect = () => {
+    gsap.to("#prev-nav-arrow", { opacity: 1 });
+  };
+
+  const prevHoverEffect = () => {
+    gsap.to("#next-nav-arrow", { opacity: 0.3 });
+  };
+
+  const prevRevokeEffect = () => {
+    gsap.to("#next-nav-arrow", { opacity: 1 });
+  };
+
   return (
     <FooterBar>
       <div className="inner-nav">
-        <div className="nav--arrow prev">
-          {" "}
-          <img
-            src="../assets/img/arrow-left.svg"
-            alt=""
-            width="20"
-            height="20"
-          />
-        </div>
-        <div className="nav--arrow next">
-          {" "}
-          <img
-            src="../assets/img/arrow-right.svg"
-            alt=""
-            width="20"
-            height="20"
-          />
-        </div>
+        <Link href={prev}>
+          <a>
+            <div
+              id="prev-nav-arrow"
+              className="nav--arrow prev"
+              onClick={handlePrev}
+              onMouseEnter={prevHoverEffect}
+              onMouseLeave={prevRevokeEffect}
+            >
+              {" "}
+              <img
+                src="../assets/img/arrow-left.svg"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </div>
+          </a>
+        </Link>
+        <Link href={next}>
+          <a>
+            <div
+              id="next-nav-arrow"
+              className="nav--arrow next"
+              onClick={handleNext}
+              onMouseEnter={nextHoverEffect}
+              onMouseLeave={nextRevokeEffect}
+            >
+              {" "}
+              <img
+                src="../assets/img/arrow-right.svg"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </div>
+          </a>
+        </Link>
       </div>
     </FooterBar>
   );
@@ -875,6 +921,10 @@ const FooterBar = styled.footer`
     margin-left: auto;
     display: flex;
     height: 100%;
+
+    a {
+      display: contents;
+    }
 
     .nav--arrow {
       display: flex;

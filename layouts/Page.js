@@ -30,8 +30,7 @@ const Page = ({ children, next, prev, title, isFoward, isMenu }) => {
       <Menu />
       <SearchMenu />
       <HelpMenu />
-      {/* <NavArrows next={next} prev={prev} isFoward={isFoward} isMenu={isMenu} /> */}
-      <Footer />
+      <Footer next={next} prev={prev} />
     </Fragment>
   );
 };
