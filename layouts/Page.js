@@ -9,6 +9,7 @@ import {
   SearchMenu,
   HelpMenu,
   NavArrows,
+  Footer,
 } from "../components/PageComponents";
 
 const Page = ({ children, next, prev, title, isFoward, isMenu }) => {
@@ -30,6 +31,7 @@ const Page = ({ children, next, prev, title, isFoward, isMenu }) => {
       <SearchMenu />
       <HelpMenu />
       <NavArrows next={next} prev={prev} isFoward={isFoward} isMenu={isMenu} />
+      <Footer />
     </Fragment>
   );
 };

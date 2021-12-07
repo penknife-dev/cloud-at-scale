@@ -725,6 +725,7 @@ const SearchMenuContainer = styled.div`
 
 // end search menu
 
+// the help menu for when users get stuck
 export const HelpMenu = () => {
   const helpState = useIsHelpOpen();
 
@@ -829,3 +830,60 @@ const HelpContainer = styled.div`
     }
   }
 `;
+//  end help menu
+
+// footer / bottom bar to be included on every content page
+export const Footer = () => {
+  return (
+    <FooterBar>
+      <div className="inner-nav">
+        <div className="nav--arrow prev">
+          {" "}
+          <img
+            src="../assets/img/arrow-left.svg"
+            alt=""
+            width="20"
+            height="20"
+          />
+        </div>
+        <div className="nav--arrow next">
+          {" "}
+          <img
+            src="../assets/img/arrow-right.svg"
+            alt=""
+            width="20"
+            height="20"
+          />
+        </div>
+      </div>
+    </FooterBar>
+  );
+};
+
+const FooterBar = styled.footer`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .inner-nav {
+    margin-left: auto;
+    display: flex;
+    height: 100%;
+
+    .nav--arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      background: rgba(246, 183, 75, 1);
+      cursor: pointer;
+    }
+  }
+`;
+// end footer / bottom bar
