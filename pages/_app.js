@@ -13,11 +13,7 @@ function MyApp({ Component, pageProps, router }) {
   };
 
   return (
-    <AnimatePresence
-      initial={false}
-      onExit={() => toTop()}
-      onExitComplete={() => toTop()}
-    >
+    <AnimatePresence initial={false} onExit={toTop} onExitComplete={toTop}>
       <Component {...pageProps} key={router.route} />
     </AnimatePresence>
   );

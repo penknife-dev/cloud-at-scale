@@ -9,6 +9,7 @@ import { useLongPress } from "use-long-press";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 
 import {
   useIsFoward,
@@ -18,6 +19,7 @@ import {
 } from "../state/store";
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
 
 // Nav / toolbar to be on every page
 export const Navbar = ({ next, prev, title, isMenu }) => {
@@ -839,10 +841,12 @@ export const Footer = ({ prev, next }) => {
 
   const handleNext = () => {
     fowardState.setFoward();
+    gsap.to(window, { duration: 0.5, scrollTo: 0 });
   };
 
   const handlePrev = () => {
     fowardState.setBackward();
+    gsap.to(window, { duration: 0.5, scrollTo: 0 });
   };
 
   const nextHoverEffect = () => {
@@ -970,7 +974,7 @@ const FooterBar = styled.footer`
 
   .socials {
     display: flex;
-    padding-left: 30px;
+    padding-left: 50px;
     align-items: center;
 
     div {
