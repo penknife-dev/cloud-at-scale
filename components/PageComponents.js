@@ -833,6 +833,7 @@ const HelpContainer = styled.div`
 //  end help menu
 
 // footer / bottom bar to be included on every content page
+// only to be visible when user hits bottom of page
 export const Footer = ({ prev, next }) => {
   const fowardState = useIsFoward();
 
@@ -860,8 +861,52 @@ export const Footer = ({ prev, next }) => {
     gsap.to("#next-nav-arrow", { opacity: 1 });
   };
 
+  useEffect(() => {
+    return () => {
+      gsap.to(".main-footer", {
+        autoAlpha: 1,
+        y: 0,
+        scrollTrigger: {
+          trigger: ".dark",
+          pin: false,
+          start: "top bottom-=80px",
+          markers: false,
+          toggleActions: "play none none reverse",
+        },
+      });
+    };
+  }, []);
+
   return (
-    <FooterBar>
+    <FooterBar className="main-footer">
+      <div className="socials">
+        <a href="https://www.linkedin.com/company/amdocs/" target="_blank">
+          <div>
+            <img src="../assets/img/icon-linkedin.svg" alt="" />
+          </div>
+        </a>
+        <a href="https://twitter.com/Amdocs" target="_blank">
+          <div>
+            <img src="../assets/img/icon-twitter.svg" alt="" />
+          </div>
+        </a>
+        <a href="https://www.facebook.com/Amdocs/" target="_blank">
+          <div>
+            <img src="../assets/img/icon-facebook.svg" alt="" />
+          </div>
+        </a>
+        <a href="https://www.instagram.com/amdocslife/" target="_blank">
+          <div>
+            <img src="../assets/img/icon-instagram.svg" alt="" />
+          </div>
+        </a>
+        <a href="https://www.youtube.com/user/amdocsinc" target="_blank">
+          <div>
+            <img src="../assets/img/icon-youtube.svg" alt="" />
+          </div>
+        </a>
+        <p>© 2022 Amdocs</p>
+      </div>
       <div className="inner-nav">
         <Link href={prev}>
           <a>
@@ -916,6 +961,35 @@ const FooterBar = styled.footer`
   bottom: 0;
   left: 0;
   right: 0;
+  color: #fff;
+  align-items: center;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100px);
+
+  .socials {
+    display: flex;
+    padding-left: 30px;
+    align-items: center;
+
+    div {
+      flex: 1;
+      display: inline-block;
+      margin: 0 5px;
+      cursor: pointer;
+
+      img {
+        display: block;
+        width: 20px;
+      }
+    }
+
+    p {
+      margin-left: 30px;
+      font-size: 12px;
+    }
+  }
 
   .inner-nav {
     margin-left: auto;
