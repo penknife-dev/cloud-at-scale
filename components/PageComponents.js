@@ -837,6 +837,7 @@ const HelpContainer = styled.div`
 // footer / bottom bar to be included on every content page
 // only to be visible when user hits bottom of page
 export const Footer = ({ prev, next }) => {
+  const router = useRouter();
   const fowardState = useIsFoward();
 
   const handleNext = () => {
@@ -882,29 +883,47 @@ export const Footer = ({ prev, next }) => {
   }, []);
 
   return (
-    <FooterBar className="main-footer">
+    <FooterBar
+      className={router.pathname == "/" ? "hidden main-footer" : "main-footer"}
+    >
       <div className="socials">
-        <a href="https://www.linkedin.com/company/amdocs/" target="_blank">
+        <a
+          href="https://www.linkedin.com/company/amdocs/"
+          target="_blank"
+          rel="noreferrer"
+        >
           <div>
             <img src="../assets/img/icon-linkedin.svg" alt="" />
           </div>
         </a>
-        <a href="https://twitter.com/Amdocs" target="_blank">
+        <a href="https://twitter.com/Amdocs" target="_blank" rel="noreferrer">
           <div>
             <img src="../assets/img/icon-twitter.svg" alt="" />
           </div>
         </a>
-        <a href="https://www.facebook.com/Amdocs/" target="_blank">
+        <a
+          href="https://www.facebook.com/Amdocs/"
+          target="_blank"
+          rel="noreferrer"
+        >
           <div>
             <img src="../assets/img/icon-facebook.svg" alt="" />
           </div>
         </a>
-        <a href="https://www.instagram.com/amdocslife/" target="_blank">
+        <a
+          href="https://www.instagram.com/amdocslife/"
+          target="_blank"
+          rel="noreferrer"
+        >
           <div>
             <img src="../assets/img/icon-instagram.svg" alt="" />
           </div>
         </a>
-        <a href="https://www.youtube.com/user/amdocsinc" target="_blank">
+        <a
+          href="https://www.youtube.com/user/amdocsinc"
+          target="_blank"
+          rel="noreferrer"
+        >
           <div>
             <img src="../assets/img/icon-youtube.svg" alt="" />
           </div>
@@ -971,6 +990,12 @@ const FooterBar = styled.footer`
   opacity: 0;
   visibility: hidden;
   transform: translateY(100px);
+
+  &.hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    display: none;
+  }
 
   .socials {
     display: flex;

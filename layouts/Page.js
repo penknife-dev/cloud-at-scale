@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { gsap } from "gsap";
 
 import {
@@ -13,6 +14,8 @@ import {
 } from "../components/PageComponents";
 
 const Page = ({ children, next, prev, title, isFoward, isMenu }) => {
+  const router = useRouter();
+
   return (
     <Fragment>
       <Head>
@@ -30,7 +33,7 @@ const Page = ({ children, next, prev, title, isFoward, isMenu }) => {
       <Menu />
       <SearchMenu />
       <HelpMenu />
-      <Footer next={next} prev={prev} />
+      {router.pathname == "/" ? null : <Footer next={next} prev={prev} />}
     </Fragment>
   );
 };
