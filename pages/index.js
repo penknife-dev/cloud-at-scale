@@ -166,25 +166,25 @@ const TitleBox = styled.div`
   /* max-height: 90%; */
 
   h1 {
-    background: -webkit-linear-gradient(
-      0deg,
-      rgba(253, 181, 21, 1) 0%,
-      rgba(242, 102, 95, 1) 50%,
-      rgba(236, 0, 140, 1) 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
     font-family: "MarkPro-Bold";
     font-size: 5em;
     margin-bottom: 0;
     letter-spacing: -2px;
-    line-height: 1;
+    line-height: 1.2;
     span {
       /* overflow: hidden; */
 
       div {
         display: inline-block;
+
+        background: -webkit-linear-gradient(
+          0deg,
+          rgba(253, 181, 21, 1) 0%,
+          rgba(242, 102, 95, 1) 50%,
+          rgba(236, 0, 140, 1) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         /* transform: translateY(10%); */
       }
     }
