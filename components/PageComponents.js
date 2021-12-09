@@ -866,25 +866,40 @@ export const Footer = ({ prev, next }) => {
     gsap.to("#next-nav-arrow", { opacity: 1 });
   };
 
-  useEffect(() => {
-    return () => {
-      gsap.to(".main-footer", {
-        autoAlpha: 1,
-        y: 0,
-        scrollTrigger: {
-          trigger: ".dark",
-          pin: false,
-          start: "top bottom-=80px",
-          markers: false,
-          toggleActions: "play none none reverse",
-        },
-      });
-    };
-  }, []);
+  // useEffect(() => {
+  //   gsap.to(".main-footer", {
+  //     autoAlpha: 1,
+  //     y: 0,
+  //     scrollTrigger: {
+  //       trigger: ".dark",
+  //       pin: false,
+  //       start: "top bottom-=80px",
+  //       markers: false,
+  //       toggleActions: "play none none reverse",
+  //     },
+  //   });
+  // });
+
+  // useEffect(() => {
+  //   return () => {
+  //     gsap.to(".main-footer", {
+  //       autoAlpha: 1,
+  //       y: 0,
+  //       scrollTrigger: {
+  //         trigger: ".dark",
+  //         pin: false,
+  //         start: "top bottom-=80px",
+  //         markers: false,
+  //         toggleActions: "play none none reverse",
+  //       },
+  //     });
+  //   };
+  // }, []);
 
   return (
     <FooterBar
       className={router.pathname == "/" ? "hidden main-footer" : "main-footer"}
+      id={"footer-" + router.pathname.replace("/", "")}
     >
       <div className="socials">
         <a

@@ -35,7 +35,9 @@ const First = ({ children, direction, noPrompt }) => {
     );
   }, []);
 
-  return <FirstContainer>{children}</FirstContainer>;
+  return (
+    <FirstContainer className="first-container">{children}</FirstContainer>
+  );
 };
 
 const FirstContainer = styled.section`
