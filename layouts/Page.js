@@ -50,7 +50,9 @@ const Page = ({ children, next, prev, title, isFoward, isMenu }) => {
       <Menu />
       <SearchMenu />
       <HelpMenu />
+
       {router.pathname == "/" ? null : <Footer next={next} prev={prev} />}
+
     </Fragment>
   );
 };
