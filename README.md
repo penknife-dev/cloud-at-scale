@@ -1,5 +1,3 @@
-This project was bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
 Get the dependencies
@@ -16,4 +14,12 @@ Then, run the development server:
 npm run dev
 # or
 yarn dev
+```
+
+Make sure the correct endpoint is set in the next config before building and exporting
+
+```bash
+npm run build
+# or
+yarn build
 ```
