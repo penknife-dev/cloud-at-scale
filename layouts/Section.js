@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 const Section = ({ children, dark, alt }) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    console.log(router);
+  }, []);
+
   return (
-    <SectionContainer className={dark ? "dark" : null} dark={dark} alt={alt}>
+    <SectionContainer
+      id={"section-" + router.pathname.replace("/", "")}
+      className={dark ? "dark" : null}
+      dark={dark}
+      alt={alt}
+    >
       {children}
     </SectionContainer>
   );

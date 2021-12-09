@@ -1,6 +1,8 @@
 import React, { Fragment, useEffect } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 import {
   Navbar,
@@ -12,7 +14,25 @@ import {
   Footer,
 } from "../components/PageComponents";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Page = ({ children, next, prev, title, isFoward, isMenu }) => {
+  const router = useRouter();
+
+  useEffect(() => {
+    gsap.to(".main-footer", {
+      autoAlpha: 1,
+      y: 0,
+      scrollTrigger: {
+        trigger: ".first-container",
+        pin: false,
+        start: "bottom bottom",
+        markers: false,
+        toggleActions: "play none none reverse",
+      },
+    });
+  });
+
   return (
     <Fragment>
       <Head>
@@ -30,7 +50,9 @@ const Page = ({ children, next, prev, title, isFoward, isMenu }) => {
       <Menu />
       <SearchMenu />
       <HelpMenu />
-      <NavArrows next={next} prev={prev} isFoward={isFoward} isMenu={isMenu} />
+
+      {router.pathname == "/" ? null : <Footer next={next} prev={prev} />}
+
     </Fragment>
   );
 };

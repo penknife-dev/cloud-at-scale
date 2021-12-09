@@ -16,15 +16,15 @@ const First = ({ children, direction, noPrompt }) => {
       duration: 3,
       ease: "Expo.easInOut",
     });
-    tl.to(
-      ".down-page",
-      {
-        y: 10,
-        repeat: -1,
-        yoyo: true,
-      },
-      2
-    );
+    // tl.to(
+    //   ".down-page",
+    //   {
+    //     y: -1,
+    //     repeat: -1,
+    //     yoyo: true,
+    //   },
+    //   2
+    // );
     tl.to(
       ".down-page-text",
       {
@@ -35,7 +35,9 @@ const First = ({ children, direction, noPrompt }) => {
     );
   }, []);
 
-  return <FirstContainer>{children}</FirstContainer>;
+  return (
+    <FirstContainer className="first-container">{children}</FirstContainer>
+  );
 };
 
 const FirstContainer = styled.section`
@@ -44,25 +46,6 @@ const FirstContainer = styled.section`
   overflow: hidden;
   display: flex;
   position: relative;
-
-  .down-page {
-    display: block;
-    width: 130px;
-    height: 130px;
-    position: absolute;
-    bottom: 60px;
-  }
-
-  .down-page-text {
-    display: block;
-    position: absolute;
-    bottom: 60px;
-    padding-left: 155px;
-
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(30px);
-  }
 `;
 
 export default First;

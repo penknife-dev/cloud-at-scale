@@ -27,12 +27,13 @@ const pageThree = ({}) => {
             <div>
               <span className="staggerup">of ad hoc cloud use</span>
             </div>
+
+            <DownPrompt />
+            <div className="down-page-text">
+              scroll <br />
+              down
+            </div>
           </h1>
-          <DownPrompt />
-          <div className="down-page-text">
-            scroll <br />
-            down
-          </div>
         </HeadlineBlock>
       </First>
 

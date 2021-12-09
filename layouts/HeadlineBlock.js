@@ -61,7 +61,33 @@ const Headline = styled.div`
     letter-spacing: -3px;
     line-height: 1.2;
     margin: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
+    position: relative;
+
+
+    .down-page {
+    display: block;
+    width: 110px;
+    height: 110px;
+    position: absolute;
+    bottom: -200px;
+    left: 50%;
+    transform: translateY(-50%);
+
+  }
+
+  .down-page-text {
+    display: block;
+    position: absolute;
+    bottom: -130px;
+    padding-left: 155px;
+    font-size: .5em;
+    letter-spacing: 1px;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(30px);
+  }
 
     div {
       display: block;

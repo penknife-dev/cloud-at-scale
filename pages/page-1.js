@@ -30,12 +30,13 @@ const pageOne = ({}) => {
             <div>
               <span className="staggerup">the path to success</span>
             </div>
+
+            <DownPrompt />
+            <div className="down-page-text">
+              scroll <br />
+              down
+            </div>
           </h1>
-          <DownPrompt />
-          <div className="down-page-text">
-            scroll <br />
-            down
-          </div>
         </HeadlineBlock>
       </First>
 

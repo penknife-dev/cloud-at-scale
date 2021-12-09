@@ -29,12 +29,13 @@ const pageTwo = ({}) => {
             <div>
               <span className="staggerup">and risks</span>
             </div>
+
+            <DownPrompt />
+            <div className="down-page-text">
+              scroll <br />
+              down
+            </div>
           </h1>
-          <DownPrompt />
-          <div className="down-page-text">
-            scroll <br />
-            down
-          </div>
         </HeadlineBlock>
 
         <HeadlineBlock overlay center>

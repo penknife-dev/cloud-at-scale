@@ -9,6 +9,7 @@ import { useLongPress } from "use-long-press";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 
 import {
   useIsFoward,
@@ -18,6 +19,7 @@ import {
 } from "../state/store";
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
 
 // Nav / toolbar to be on every page
 export const Navbar = ({ next, prev, title, isMenu }) => {
@@ -833,28 +835,155 @@ const HelpContainer = styled.div`
 //  end help menu
 
 // footer / bottom bar to be included on every content page
-export const Footer = () => {
+// only to be visible when user hits bottom of page
+export const Footer = ({ prev, next }) => {
+  const router = useRouter();
+  const fowardState = useIsFoward();
+
+  const handleNext = () => {
+    fowardState.setFoward();
+    gsap.to(window, { duration: 0.5, scrollTo: 0 });
+  };
+
+  const handlePrev = () => {
+    fowardState.setBackward();
+    gsap.to(window, { duration: 0.5, scrollTo: 0 });
+  };
+
+  const nextHoverEffect = () => {
+    gsap.to("#prev-nav-arrow", { opacity: 0.3 });
+  };
+
+  const nextRevokeEffect = () => {
+    gsap.to("#prev-nav-arrow", { opacity: 1 });
+  };
+
+  const prevHoverEffect = () => {
+    gsap.to("#next-nav-arrow", { opacity: 0.3 });
+  };
+
+  const prevRevokeEffect = () => {
+    gsap.to("#next-nav-arrow", { opacity: 1 });
+  };
+
+  // useEffect(() => {
+  //   gsap.to(".main-footer", {
+  //     autoAlpha: 1,
+  //     y: 0,
+  //     scrollTrigger: {
+  //       trigger: ".dark",
+  //       pin: false,
+  //       start: "top bottom-=80px",
+  //       markers: false,
+  //       toggleActions: "play none none reverse",
+  //     },
+  //   });
+  // });
+
+  // useEffect(() => {
+  //   return () => {
+  //     gsap.to(".main-footer", {
+  //       autoAlpha: 1,
+  //       y: 0,
+  //       scrollTrigger: {
+  //         trigger: ".dark",
+  //         pin: false,
+  //         start: "top bottom-=80px",
+  //         markers: false,
+  //         toggleActions: "play none none reverse",
+  //       },
+  //     });
+  //   };
+  // }, []);
+
   return (
-    <FooterBar>
+    <FooterBar
+      className={router.pathname == "/" ? "hidden main-footer" : "main-footer"}
+      id={"footer-" + router.pathname.replace("/", "")}
+    >
+      <div className="socials">
+        <a
+          href="https://www.linkedin.com/company/amdocs/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div>
+            <img src="../assets/img/icon-linkedin.svg" alt="" />
+          </div>
+        </a>
+        <a href="https://twitter.com/Amdocs" target="_blank" rel="noreferrer">
+          <div>
+            <img src="../assets/img/icon-twitter.svg" alt="" />
+          </div>
+        </a>
+        <a
+          href="https://www.facebook.com/Amdocs/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div>
+            <img src="../assets/img/icon-facebook.svg" alt="" />
+          </div>
+        </a>
+        <a
+          href="https://www.instagram.com/amdocslife/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div>
+            <img src="../assets/img/icon-instagram.svg" alt="" />
+          </div>
+        </a>
+        <a
+          href="https://www.youtube.com/user/amdocsinc"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div>
+            <img src="../assets/img/icon-youtube.svg" alt="" />
+          </div>
+        </a>
+        <p>© 2022 Amdocs</p>
+      </div>
       <div className="inner-nav">
-        <div className="nav--arrow prev">
-          {" "}
-          <img
-            src="../assets/img/arrow-left.svg"
-            alt=""
-            width="20"
-            height="20"
-          />
-        </div>
-        <div className="nav--arrow next">
-          {" "}
-          <img
-            src="../assets/img/arrow-right.svg"
-            alt=""
-            width="20"
-            height="20"
-          />
-        </div>
+        <Link href={prev}>
+          <a>
+            <div
+              id="prev-nav-arrow"
+              className="nav--arrow prev"
+              onClick={handlePrev}
+              onMouseEnter={prevHoverEffect}
+              onMouseLeave={prevRevokeEffect}
+            >
+              {" "}
+              <img
+                src="../assets/img/arrow-left.svg"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </div>
+          </a>
+        </Link>
+        <Link href={next}>
+          <a>
+            <div
+              id="next-nav-arrow"
+              className="nav--arrow next"
+              onClick={handleNext}
+              onMouseEnter={nextHoverEffect}
+              onMouseLeave={nextRevokeEffect}
+            >
+              {" "}
+              <img
+                src="../assets/img/arrow-right.svg"
+                alt=""
+                width="20"
+                height="20"
+              />
+            </div>
+          </a>
+        </Link>
       </div>
     </FooterBar>
   );
@@ -870,11 +999,50 @@ const FooterBar = styled.footer`
   bottom: 0;
   left: 0;
   right: 0;
+  color: #fff;
+  align-items: center;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100px);
+
+  &.hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    display: none;
+  }
+
+  .socials {
+    display: flex;
+    padding-left: 50px;
+    align-items: center;
+
+    div {
+      flex: 1;
+      display: inline-block;
+      margin: 0 5px;
+      cursor: pointer;
+
+      img {
+        display: block;
+        width: 20px;
+      }
+    }
+
+    p {
+      margin-left: 30px;
+      font-size: 12px;
+    }
+  }
 
   .inner-nav {
     margin-left: auto;
     display: flex;
     height: 100%;
+
+    a {
+      display: contents;
+    }
 
     .nav--arrow {
       display: flex;
