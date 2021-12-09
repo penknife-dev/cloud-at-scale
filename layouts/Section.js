@@ -23,6 +23,7 @@ const Section = ({ children, dark, alt }) => {
 
 const SectionContainer = styled.section`
   display: flex;
+  position: relative;
 
   div {
     flex: 1;
@@ -66,6 +67,73 @@ const SectionContainer = styled.section`
 
     p {
       color: ${(props) => (props.dark ? "#fff" : "#000")};
+    }
+  }
+
+  /* for smaller h1s on grids / cards */
+  .info-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .graphic {
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      height: 100%;
+
+      img {
+        display: block;
+        position: relative;
+        object-fit: contain;
+      }
+
+      &#gr1 {
+        width: 150px;
+      }
+
+      &#gr2 {
+        width: 150px;
+        right: 0;
+        img {
+          max-height: 150px;
+        }
+      }
+
+      &#gr3 {
+        width: 150px;
+      }
+
+      &#gr4 {
+        width: 150px;
+        right: 0;
+      }
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &:nth-of-type(odd) {
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: right;
+        justify-content: flex-start;
+      }
+    }
+
+    h1 {
+      font-size: 2.6em;
+    }
+
+    p {
+      max-width: 65%;
     }
   }
 `;
