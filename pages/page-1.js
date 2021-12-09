@@ -79,6 +79,10 @@ const pageOne = ({}) => {
       </Section>
 
       <Section dark>
+        <img id="cloud-tick1" src="../assets/img/cloud-tick.svg" alt="" />
+        <img id="cloud-tick2" src="../assets/img/cloud-tick.svg" alt="" />
+        <img id="cloud-tick3" src="../assets/img/cloud-tick.svg" alt="" />
+
         <div>
           <h1>
             Not another <br /> proof of
