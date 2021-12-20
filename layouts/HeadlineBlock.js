@@ -3,7 +3,14 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 
-const HeadlineBlock = ({ children, overlay, center, dark, imagePosition }) => {
+const HeadlineBlock = ({
+  children,
+  overlay,
+  center,
+  dark,
+  left,
+  imagePosition,
+}) => {
   useEffect(() => {
     gsap.to(".staggerup", {
       autoAlpha: 1,
@@ -17,6 +24,7 @@ const HeadlineBlock = ({ children, overlay, center, dark, imagePosition }) => {
     <Headline
       className={dark ? "darker" : null}
       center={center}
+      left={left}
       overlay={overlay}
       dark={dark}
       imagePosition={imagePosition}
@@ -87,6 +95,10 @@ const Headline = styled.div`
     opacity: 0;
     visibility: hidden;
     transform: translateY(30px);
+
+    &.no-padding{
+      padding-left: 115px;
+    }
   }
 
     div {
@@ -106,6 +118,10 @@ const Headline = styled.div`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     color: rgba(253, 181, 21, 1);
+
+    &.bold{
+      font-weight: 700;
+    }
         }
       }
     }
@@ -113,7 +129,8 @@ const Headline = styled.div`
 
   img {
     object-fit: cover;
-    object-position: ${(props) => (props.center ? "center" : "right")};
+    object-position: ${(props) =>
+      props.center ? "center" : props.left ? "left" : "right"};
     position: absolute;
     top: 0;
     left: 0;
