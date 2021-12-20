@@ -48,7 +48,7 @@ export const Navbar = ({ next, prev, title, isMenu }) => {
 
       <div className="part">
         <div className="page-count">
-          {router.pathname.replace("/page-", "")}/3
+          {router.pathname.replace("/page-", "")}/11
         </div>
       </div>
 
@@ -296,20 +296,70 @@ export const Menu = () => {
     switch (menuImage.get()) {
       case "page-1":
         gsap.to("#si-1", { y: 0 });
-        gsap.to("#si-2,#si-3", { y: "-100%" });
+        gsap.to("#si-2,#si-3,#si-4,#si-5,#si-6,#si-7,#si-8,#si-9,#si-10", {
+          y: "-100%",
+        });
         break;
       case "page-2":
         gsap.to("#si-2", { y: 0 });
-        gsap.to("#si-1,#si-3", { y: "-100%" });
-
+        gsap.to("#si-1,#si-3,#si-4,#si-5,#si-6,#si-7,#si-8,#si-9,#si-10", {
+          y: "-100%",
+        });
         break;
       case "page-3":
         gsap.to("#si-3", { y: 0 });
-        gsap.to("#si-1,#si-2", { y: "-100%" });
-
+        gsap.to("#si-1,#si-2,#si-4,#si-5,#si-6,#si-7,#si-8,#si-9,#si-10", {
+          y: "-100%",
+        });
         break;
+      case "page-4":
+        gsap.to("#si-4", { y: 0 });
+        gsap.to("#si-1,#si-2,#si-3,#si-5,#si-6,#si-7,#si-8,#si-9,#si-10", {
+          y: "-100%",
+        });
+        break;
+      case "page-5":
+        gsap.to("#si-5", { y: 0 });
+        gsap.to("#si-1,#si-2,#si-3,#si-4,#si-6,#si-7,#si-8,#si-9,#si-10", {
+          y: "-100%",
+        });
+        break;
+      case "page-6":
+        gsap.to("#si-6", { y: 0 });
+        gsap.to("#si-1,#si-2,#si-3,#si-4,#si-5,#si-7,#si-8,#si-9,#si-10", {
+          y: "-100%",
+        });
+        break;
+      case "page-7":
+        gsap.to("#si-7", { y: 0 });
+        gsap.to("#si-1,#si-2,#si-3,#si-4,#si-5,#si-6,#si-8,#si-9,#si-10", {
+          y: "-100%",
+        });
+        break;
+      case "page-8":
+        gsap.to("#si-8", { y: 0 });
+        gsap.to("#si-1,#si-2,#si-3,#si-4,#si-5,#si-6,#si-7,#si-9,#si-10", {
+          y: "-100%",
+        });
+        break;
+      case "page-9":
+        gsap.to("#si-9", { y: 0 });
+        gsap.to("#si-1,#si-2,#si-3,#si-4,#si-5,#si-6,#si-7,#si-8,#si-10", {
+          y: "-100%",
+        });
+        break;
+      case "page-10":
+        gsap.to("#si-10", { y: 0 });
+        gsap.to("#si-1,#si-2,#si-3,#si-4,#si-5,#si-6,#si-7,#si-8,#si-9", {
+          y: "-100%",
+        });
+        break;
+
       default:
-        gsap.to("#si-1,#si-2,#si-3", { y: "100%" });
+        gsap.to(
+          "#si-1,#si-2,#si-3,#si-4,#si-5,#si-6,#si-7,#si-8,#si-9,#si-10",
+          { y: "100%" }
+        );
         break;
     }
   };
@@ -369,6 +419,118 @@ export const Menu = () => {
             </div>
           </a>
         </Link>
+        <Link href="/page-4">
+          <a>
+            <div
+              onMouseEnter={() => {
+                menuImage.set("page-4");
+              }}
+              onMouseLeave={() => {
+                menuImage.set("");
+              }}
+              onClick={closeMenu}
+            >
+              {" "}
+              <h1>page 4</h1>
+            </div>
+          </a>
+        </Link>
+        <Link href="/page-5">
+          <a>
+            <div
+              onMouseEnter={() => {
+                menuImage.set("page-5");
+              }}
+              onMouseLeave={() => {
+                menuImage.set("");
+              }}
+              onClick={closeMenu}
+            >
+              {" "}
+              <h1>page 5</h1>
+            </div>
+          </a>
+        </Link>
+        <Link href="/page-6">
+          <a>
+            <div
+              onMouseEnter={() => {
+                menuImage.set("page-6");
+              }}
+              onMouseLeave={() => {
+                menuImage.set("");
+              }}
+              onClick={closeMenu}
+            >
+              {" "}
+              <h1>page 6</h1>
+            </div>
+          </a>
+        </Link>
+        <Link href="/page-7">
+          <a>
+            <div
+              onMouseEnter={() => {
+                menuImage.set("page-7");
+              }}
+              onMouseLeave={() => {
+                menuImage.set("");
+              }}
+              onClick={closeMenu}
+            >
+              {" "}
+              <h1>page 7</h1>
+            </div>
+          </a>
+        </Link>
+        <Link href="/page-8">
+          <a>
+            <div
+              onMouseEnter={() => {
+                menuImage.set("page-8");
+              }}
+              onMouseLeave={() => {
+                menuImage.set("");
+              }}
+              onClick={closeMenu}
+            >
+              {" "}
+              <h1>page 8</h1>
+            </div>
+          </a>
+        </Link>
+        <Link href="/page-9">
+          <a>
+            <div
+              onMouseEnter={() => {
+                menuImage.set("page-9");
+              }}
+              onMouseLeave={() => {
+                menuImage.set("");
+              }}
+              onClick={closeMenu}
+            >
+              {" "}
+              <h1>page 9</h1>
+            </div>
+          </a>
+        </Link>
+        <Link href="/page-10">
+          <a>
+            <div
+              onMouseEnter={() => {
+                menuImage.set("page-10");
+              }}
+              onMouseLeave={() => {
+                menuImage.set("");
+              }}
+              onClick={closeMenu}
+            >
+              {" "}
+              <h1>page 10</h1>
+            </div>
+          </a>
+        </Link>
       </MenuHalf>
       <MenuHalf>
         <div className="selected-img" id="si-1">
@@ -379,6 +541,27 @@ export const Menu = () => {
         </div>
         <div className="selected-img" id="si-3">
           <img id="menu-image" src="../assets/img/risk2.jpg" alt="" />
+        </div>
+        <div className="selected-img" id="si-4">
+          <img id="menu-image" src="../assets/img/bank-cover.jpg" alt="" />
+        </div>
+        <div className="selected-img" id="si-5">
+          <img id="menu-image" src="../assets/img/practice1-full.jpg" alt="" />
+        </div>
+        <div className="selected-img" id="si-6">
+          <img id="menu-image" src="../assets/img/practice2-full.jpg" alt="" />
+        </div>
+        <div className="selected-img" id="si-7">
+          <img id="menu-image" src="../assets/img/practice3-full.jpg" alt="" />
+        </div>
+        <div className="selected-img" id="si-8">
+          <img id="menu-image" src="../assets/img/practice4-full.jpg" alt="" />
+        </div>
+        <div className="selected-img" id="si-9">
+          <img id="menu-image" src="../assets/img/practice5-full.jpg" alt="" />
+        </div>
+        <div className="selected-img" id="si-10">
+          <img id="menu-image" src="../assets/img/accountability1.jpg" alt="" />
         </div>
       </MenuHalf>
     </MenuContainer>
@@ -434,7 +617,8 @@ const MenuHalf = styled.div`
   flex: 1;
   position: relative;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   &.pages {
     padding: 3em;
