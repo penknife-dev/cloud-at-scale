@@ -20,7 +20,6 @@
 gsap-bonus.tgz
 *.tgz
 *.pem
-.mov
 
 # debug
 npm-debug.log*
