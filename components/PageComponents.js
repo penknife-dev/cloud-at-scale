@@ -52,7 +52,7 @@ export const Navbar = ({ next, prev, title, isMenu }) => {
         </div>
       </div>
 
-      <div className="part">Go bigger and faster with cloud</div>
+      <div className="part doc-title">Go bigger and faster with cloud</div>
 
       <div className="tools">
         <div className="part">
@@ -96,6 +96,10 @@ const Navigation = styled.nav`
   padding: 0 30px;
   z-index: 100;
 
+  @media (max-width: 780px) {
+    padding: 0 10px;
+  }
+
   &::after {
     position: absolute;
     content: "";
@@ -126,6 +130,12 @@ const Navigation = styled.nav`
     margin: 0 10px;
     justify-content: center;
     align-items: center;
+
+    &.doc-title {
+      @media (max-width: 780px) {
+        display: none;
+      }
+    }
   }
 
   .burger {
@@ -142,6 +152,11 @@ const Navigation = styled.nav`
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     cursor: pointer;
+
+    @media (max-width: 780px) {
+      padding-left: 0;
+      width: 45px;
+    }
 
     span {
       width: 85%;
@@ -195,6 +210,10 @@ const Navigation = styled.nav`
 
     .page-title {
       margin-right: 30px;
+
+      @media (max-width: 780px) {
+        display: none;
+      }
     }
 
     .helper {
@@ -596,12 +615,20 @@ const MenuContainer = styled.div`
   /* padding: 3em; */
   z-index: 1000;
 
+  @media (max-width: 780px) {
+    display: none;
+  }
+
   transform: translateX(-100%);
   transition: all 0.5s ease;
 
   &.open {
     transform: translateX(0);
     transition: all 0.5s ease;
+
+    @media (max-width: 780px) {
+      display: flex;
+    }
   }
 
   div {
@@ -619,6 +646,10 @@ const MenuContainer = styled.div`
     font-size: 3em;
     transition: all 0.5s ease;
 
+    @media (max-width: 780px) {
+      font-size: 2em;
+    }
+
     &:hover {
       color: #f6b74b;
       transition: all 0.5s ease;
@@ -635,8 +666,18 @@ const MenuHalf = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
 
+  @media (max-width: 780px) {
+    display: block;
+    flex: none;
+    width: 100%;
+  }
+
   &.pages {
     padding: 3em;
+
+    @media (max-width: 780px) {
+      padding: 1em;
+    }
     /* padding-bottom: 50px; */
   }
 
@@ -659,6 +700,10 @@ const MenuHalf = styled.div`
       height: 100%;
       content: "";
       background: rgba(0, 0, 0, 0.5);
+
+      @media (max-width: 780px) {
+        display: none;
+      }
     }
 
     /* opacity: 0;
@@ -674,6 +719,10 @@ const MenuHalf = styled.div`
     bottom: 0;
     width: 100%;
     height: 100%;
+
+    @media (max-width: 780px) {
+      display: none;
+    }
   }
 `;
 
@@ -1066,36 +1115,6 @@ export const Footer = ({ prev, next }) => {
     gsap.to("#next-nav-arrow", { opacity: 1 });
   };
 
-  // useEffect(() => {
-  //   gsap.to(".main-footer", {
-  //     autoAlpha: 1,
-  //     y: 0,
-  //     scrollTrigger: {
-  //       trigger: ".dark",
-  //       pin: false,
-  //       start: "top bottom-=80px",
-  //       markers: false,
-  //       toggleActions: "play none none reverse",
-  //     },
-  //   });
-  // });
-
-  // useEffect(() => {
-  //   return () => {
-  //     gsap.to(".main-footer", {
-  //       autoAlpha: 1,
-  //       y: 0,
-  //       scrollTrigger: {
-  //         trigger: ".dark",
-  //         pin: false,
-  //         start: "top bottom-=80px",
-  //         markers: false,
-  //         toggleActions: "play none none reverse",
-  //       },
-  //     });
-  //   };
-  // }, []);
-
   return (
     <FooterBar
       className={router.pathname == "/" ? "hidden main-footer" : "main-footer"}
@@ -1205,6 +1224,10 @@ const FooterBar = styled.footer`
   right: 0;
   color: #fff;
   align-items: center;
+
+  @media (max-width: 780px) {
+    display: none;
+  }
 
   opacity: 0;
   visibility: hidden;
