@@ -1,8 +1,12 @@
 import React, { Fragment, useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { isMobile, MobileView } from "react-device-detect";
+import { useSwipeable } from "react-swipeable";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+import { useIsFoward } from "../state/store";
 
 import {
   Navbar,
@@ -18,6 +22,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Page = ({ children, next, prev, title, isFoward, isMenu }) => {
   const router = useRouter();
+  const fowardState = useIsFoward();
+
+  const nextPage = () => {
+    fowardState.setFoward();
+    router.push(next);
+  };
+
+  const prevPage = () => {
+    fowardState.setBackward();
+    router.push(prev);
+  };
+
+  const handlers = useSwipeable({
+    onSwipedLeft: (eventData) => nextPage(),
+    onSwipedRight: (eventData) => prevPage(),
+  });
 
   useEffect(() => {
     gsap.to(".main-footer", {
@@ -45,7 +65,9 @@ const Page = ({ children, next, prev, title, isFoward, isMenu }) => {
       </Head>
       <Navbar next={next} prev={prev} title={title} isMenu={isMenu} />
       <PageTrans isFoward={isFoward} isMenu={isMenu}>
-        {children}
+        <div className="swipeable" {...handlers}>
+          {children}
+        </div>
       </PageTrans>
       <Menu />
       <SearchMenu />
