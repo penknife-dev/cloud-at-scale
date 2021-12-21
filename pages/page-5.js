@@ -70,7 +70,7 @@ const pageFive = ({}) => {
             enterprise-wide cloud adoption.
           </p>
         </div>
-        <div className="empty-black mob-no-padding">
+        <div className="empty-black mob-no-padding mob-first">
           <img src="../assets/img/secondary1.jpg" alt="" />
         </div>
         {/* <Parallax bg="../assets/img/practice1-full.jpg">jcuj</Parallax> */}
