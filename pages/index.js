@@ -8,6 +8,7 @@ import { MobileView } from "react-device-detect";
 import { useIsFoward } from "../state/store";
 
 import Page from "../layouts/Page";
+import { PageTrans } from "../components/PageComponents";
 
 export default function Home({ isMenu }) {
   const fowardState = useIsFoward();
@@ -19,7 +20,7 @@ export default function Home({ isMenu }) {
   }, []);
 
   return (
-    <Page next="page-1" prev="" isMenu={isMenu}>
+    <PageTrans>
       <Head>
         <title>Go bigger and faster with cloud</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -77,7 +78,7 @@ export default function Home({ isMenu }) {
           </TitleBox>
         </MaxContent>
       </BGImage>
-    </Page>
+    </PageTrans>
   );
 }
 
@@ -180,6 +181,10 @@ const Prompter = styled.div`
   border-radius: 4px;
   font-size: 2em;
   margin-bottom: 30px;
+
+  @media (max-width: 780px) {
+    font-size: 1.6em;
+  }
 `;
 
 const TitleBox = styled.div`
@@ -207,7 +212,7 @@ const TitleBox = styled.div`
     }
 
     @media (max-width: 780px) {
-      font-size: 3em;
+      font-size: 2.5em;
     }
 
     span {
@@ -258,6 +263,7 @@ const TitleBox = styled.div`
 
     @media (max-width: 980px) {
       margin-top: 0;
+      max-width: 120px;
     }
   }
 `;
