@@ -68,9 +68,16 @@ export const Navbar = ({ next, prev, title, isMenu }) => {
         >
           <img src="../assets/img/circle-help.svg" alt="" />
         </div>
-        <div className="a-icon">
-          <img src="../assets/img/amdocs-a.svg" alt="" />
-        </div>
+        <a
+          style={{ fontWeight: "bold", color: "rgba(246,183,75,1)" }}
+          target="_blank"
+          href="https://www.amdocs.com/"
+          rel="noreferrer"
+        >
+          <div className="a-icon">
+            <img src="../assets/img/amdocs-a.svg" alt="" />
+          </div>
+        </a>
         {/* <div
           className="searcher"
           onClick={() => {
