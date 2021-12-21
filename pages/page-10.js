@@ -39,7 +39,7 @@ const pageTen = ({}) => {
 
       <Section>
         <div className="empty-black">
-          <img src="../assets/img/secondary6.jpg" alt="" />
+          <img src="../assets/img/meeting1.jpg" alt="" />
         </div>
         <div>
           <p>
