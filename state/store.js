@@ -2,6 +2,7 @@ import React from "react";
 import { createState, useState } from "@hookstate/core";
 
 const isFoward = createState(true);
+const isFirst = createState(true);
 const isMenuOpen = createState(false);
 const isSearchOpen = createState(false);
 const isHelpOpen = createState(false);
@@ -18,6 +19,22 @@ export const useIsFoward = () => {
     },
     getIsFoward() {
       return state.get();
+    },
+  };
+};
+
+export const useIsFirst = () => {
+  const fstate = useState(isFirst);
+
+  return {
+    first() {
+      return fstate.set(true);
+    },
+    notFirst() {
+      return fstate.set(false);
+    },
+    get() {
+      return fstate.get();
     },
   };
 };
