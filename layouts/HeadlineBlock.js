@@ -10,6 +10,7 @@ const HeadlineBlock = ({
   dark,
   left,
   imagePosition,
+  className,
 }) => {
   useEffect(() => {
     gsap.to(".staggerup", {
@@ -22,7 +23,7 @@ const HeadlineBlock = ({
 
   return (
     <Headline
-      className={dark ? "darker" : null}
+      className={dark ? "darker " + className : className}
       center={center}
       left={left}
       overlay={overlay}
@@ -43,6 +44,16 @@ const Headline = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #fff;
+
+  @media (max-width: 780px) {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 1em;
+
+    &.mob-no-padding{
+      padding: 0em;
+    }
+  }
 
   &.darker {
     background-color: rgba(0, 0, 0, 0.7);
@@ -72,6 +83,11 @@ const Headline = styled.div`
     /* overflow: hidden; */
     position: relative;
 
+    @media (max-width: 780px) {
+      font-size: 2.6em;
+      margin-right: auto;
+  }
+
 
     .down-page {
     display: block;
@@ -82,6 +98,11 @@ const Headline = styled.div`
     left: 50%;
     transform: translateY(-50%);
 
+    @media (max-width: 780px) {
+      display: none;
+  }
+
+
   }
 
   .down-page-text {
@@ -91,6 +112,10 @@ const Headline = styled.div`
     padding-left: 155px;
     font-size: .5em;
     letter-spacing: 1px;
+
+    @media (max-width: 780px) {
+      display: none;
+  }
 
     opacity: 0;
     visibility: hidden;
@@ -138,6 +163,15 @@ const Headline = styled.div`
     bottom: 0;
     width: 100%;
     height: 100%;
+
+    @media (max-width: 780px) {
+        position: static;
+      }
+
+    /* @media (max-width: 780px) {
+      height: 70%;
+  } */
+    
   }
 `;
 
