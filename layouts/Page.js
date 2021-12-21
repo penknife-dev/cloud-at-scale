@@ -1,8 +1,9 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useCallback } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { isMobile, MobileView } from "react-device-detect";
 import { useSwipeable } from "react-swipeable";
+import { useLongPress } from "use-long-press";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
@@ -34,6 +35,18 @@ const Page = ({ children, next, prev, title, isFoward, isMenu }) => {
     router.push(prev);
   };
 
+  const callback = useCallback((event) => {
+    event.preventDefault();
+    fowardState.setBackward();
+    router.push("/page-1");
+  }, []);
+
+  const bind = useLongPress(callback, {
+    threshold: 500,
+    captureEvent: true,
+    cancelOnMovement: false,
+    detect: "both",
+  });
   const handlers = useSwipeable({
     onSwipedLeft: (eventData) => nextPage(),
     onSwipedRight: (eventData) => prevPage(),
@@ -65,7 +78,7 @@ const Page = ({ children, next, prev, title, isFoward, isMenu }) => {
       </Head>
       <Navbar next={next} prev={prev} title={title} isMenu={isMenu} />
       <PageTrans isFoward={isFoward} isMenu={isMenu}>
-        <div className="swipeable" {...handlers}>
+        <div className="swipeable" {...handlers} {...bind}>
           {children}
         </div>
       </PageTrans>

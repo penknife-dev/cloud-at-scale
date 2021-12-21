@@ -6,6 +6,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useLongPress } from "use-long-press";
+import { BrowserView, MobileView } from "react-device-detect";
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -993,16 +994,21 @@ export const HelpMenu = () => {
         </div>
         <div>
           {" "}
-          <video src="../assets/img/help-demo1.mov" controls={true}></video>
+          <video src="../assets/img/help-guide-2.mov" controls={true}></video>
         </div>
         <div className="instructions">
-          <p>
-            The Navigation arrows appear when you scroll to the bottom of the
-            page. Click the arrows to navigate from page to page.
-          </p>
-          <p>Hold the back arrow to go back to the start.</p>
-          <p>Use the hambrger menu to quickly jump from page to the page.</p>
-          <p>Use the search tool to find anything in ths eBook.</p>
+          <BrowserView>
+            <p>
+              The Navigation arrows appear when you scroll to the bottom of the
+              page. Click the arrows to navigate from page to page.
+            </p>
+            <p>Hold the back arrow to go back to the start.</p>
+            <p>Use the hambrger menu to quickly jump from page to the page.</p>
+          </BrowserView>
+          <MobileView>
+            <p>Swipe with one finger to navigate from page to page.</p>
+            <p>Use the hambrger menu to quickly jump from page to the page.</p>
+          </MobileView>
         </div>
       </section>
     </HelpContainer>
@@ -1010,7 +1016,7 @@ export const HelpMenu = () => {
 };
 
 const HelpContainer = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -1029,6 +1035,11 @@ const HelpContainer = styled.div`
   transform-origin: center center;
   transition: all 0.5s ease;
 
+  @media (max-width: 780px) {
+    padding: 0em;
+    flex-direction: column;
+  }
+
   &.open {
     opacity: 1;
     visibility: visible;
@@ -1043,6 +1054,11 @@ const HelpContainer = styled.div`
     flex-direction: row;
     width: 80%;
     position: relative;
+
+    @media (max-width: 780px) {
+      padding: 1em;
+      flex-direction: column;
+    }
 
     div {
       display: flex;
@@ -1115,6 +1131,19 @@ export const Footer = ({ prev, next }) => {
     gsap.to("#next-nav-arrow", { opacity: 1 });
   };
 
+  const callback = useCallback((event) => {
+    event.preventDefault();
+    fowardState.setBackward();
+    router.push("/page-1");
+  }, []);
+
+  const bind = useLongPress(callback, {
+    threshold: 500,
+    captureEvent: true,
+    cancelOnMovement: false,
+    detect: "both",
+  });
+
   return (
     <FooterBar
       className={router.pathname == "/" ? "hidden main-footer" : "main-footer"}
@@ -1174,6 +1203,7 @@ export const Footer = ({ prev, next }) => {
             <div
               id="prev-nav-arrow"
               className="nav--arrow prev"
+              {...bind}
               onClick={handlePrev}
               onMouseEnter={prevHoverEffect}
               onMouseLeave={prevRevokeEffect}

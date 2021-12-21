@@ -38,6 +38,7 @@ const pageOne = ({}) => {
       <SwipeIntro id="swipe-help" className={firstState.get() ? "first" : null}>
         <h1>Swipe with one finger to navigate</h1>
         <Touch />
+        <h1>Press and hold anywhere to go to start</h1>
       </SwipeIntro>
       <First noPrompt>
         <HeadlineBlock overlay className="mob-no-padding mob-first">
