@@ -15,7 +15,7 @@ const pageThree = ({}) => {
       title="Four top risks of ad hoc cloud use"
     >
       <First noPrompt>
-        <HeadlineBlock dark center>
+        <HeadlineBlock dark center className="mob-no-padding mob-first">
           <img src="../assets/img/risk2.jpg" alt="" />
         </HeadlineBlock>
 

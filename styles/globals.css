@@ -75,3 +75,27 @@ a {
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
 }
+
+@media (max-width: 780px) {
+  .swipeable {
+    position: relative;
+    top: 60px;
+  }
+
+  #cloud-tick1 {
+    display: none;
+  }
+
+  #cloud-tick2 {
+    display: none;
+  }
+
+  #cloud-tick3 {
+    display: none;
+  }
+
+  .tree-graphic,
+  .spread-graphic {
+    display: none;
+  }
+}

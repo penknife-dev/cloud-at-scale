@@ -3,6 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
 import { gsap } from "gsap";
+import { MobileView } from "react-device-detect";
 
 import { useIsFoward } from "../state/store";
 
@@ -61,6 +62,13 @@ export default function Home({ isMenu }) {
                 </Prompter>
               </a>
             </Link>
+            <MobileView>
+              <img
+                className="mobile-bg"
+                src="./assets/img/home-cover.jpg"
+                alt=""
+              />
+            </MobileView>
             <img
               className="a-logo hidden-stagger"
               src="./assets/img/amdocs-logo.svg"
@@ -86,6 +94,20 @@ const BGImage = styled.div`
   background-position: center center;
   background-size: cover; */
   z-index: 11111;
+
+  @media (max-width: 980px) {
+    top: unset;
+  }
+
+  .mobile-bg {
+    width: 100%;
+    max-width: unset;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -10;
+  }
 
   .background {
     object-fit: cover;
@@ -126,6 +148,10 @@ const BGImage = styled.div`
       rgba(0, 0, 0, 0) 90%,
       rgba(0, 0, 0, 0) 100%
     );
+
+    @media (max-width: 780px) {
+      background: rgba(0, 0, 0, 1);
+    }
   }
 `;
 
@@ -165,12 +191,25 @@ const TitleBox = styled.div`
   height: 100%;
   /* max-height: 90%; */
 
+  @media (max-width: 780px) {
+    padding: 1em;
+  }
+
   h1 {
     font-family: "MarkPro-Bold";
     font-size: 5em;
     margin-bottom: 0;
     letter-spacing: -2px;
     line-height: 1.2;
+
+    @media (max-width: 980px) {
+      font-size: 4em;
+    }
+
+    @media (max-width: 780px) {
+      font-size: 3em;
+    }
+
     span {
       /* overflow: hidden; */
 
@@ -196,6 +235,10 @@ const TitleBox = styled.div`
     font-size: 2em;
     margin-top: 10px;
 
+    @media (max-width: 780px) {
+      font-size: 1.5em;
+    }
+
     span {
       /* overflow: hidden; */
 
@@ -212,5 +255,9 @@ const TitleBox = styled.div`
     max-width: 185px;
     justify-self: flex-start;
     margin-top: auto;
+
+    @media (max-width: 980px) {
+      margin-top: 0;
+    }
   }
 `;

@@ -16,7 +16,7 @@ const pageNine = ({}) => {
       title="Go faster with the right foundation"
     >
       <First noPrompt>
-        <HeadlineBlock dark center>
+        <HeadlineBlock dark center className="mob-no-padding mob-first">
           <img src="../assets/img/practice5-full.jpg" alt="" />
         </HeadlineBlock>
         <HeadlineBlock>
@@ -73,7 +73,7 @@ const pageNine = ({}) => {
             </ul>
           </p>
         </div>
-        <div className="empty-black">
+        <div className="empty-black mob-no-padding mob-first">
           <img src="../assets/img/secondary5.jpg" alt="" />
         </div>
       </Section>

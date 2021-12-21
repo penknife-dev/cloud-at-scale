@@ -4,6 +4,7 @@ import Page from "../layouts/Page";
 import First from "../layouts/First";
 import HeadlineBlock from "../layouts/HeadlineBlock";
 import Section from "../layouts/Section";
+import { isMobile } from "react-device-detect";
 
 import { DownPrompt } from "../components/Icons";
 
@@ -16,11 +17,11 @@ const pageOne = ({}) => {
     bank to the cloud"
     >
       <First noPrompt>
-        <HeadlineBlock overlay>
+        <HeadlineBlock overlay className="mob-no-padding mob-first">
           <img src="../assets/img/home-cover.jpg" />
         </HeadlineBlock>
-        <HeadlineBlock>
-          <h1 className="first-title">
+        <HeadlineBlock className="">
+          <h1 className="first-title ">
             <div>
               <span className="staggerup">Moving your</span>
             </div>
@@ -73,7 +74,7 @@ const pageOne = ({}) => {
           </p>
         </div>
 
-        <div>
+        <div className="mob-no-padding">
           <img src="../assets/img/cloud2.jpg" alt="" />
         </div>
       </Section>

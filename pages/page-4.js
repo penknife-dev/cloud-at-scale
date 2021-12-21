@@ -35,7 +35,7 @@ const pageFour = ({}) => {
           </h1>
         </HeadlineBlock>
 
-        <HeadlineBlock dark left>
+        <HeadlineBlock dark left className="mob-no-padding mob-first">
           <img src="../assets/img/bank-cover.jpg" alt="" />
         </HeadlineBlock>
       </First>

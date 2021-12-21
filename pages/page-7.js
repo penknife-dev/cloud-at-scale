@@ -12,7 +12,7 @@ const pageSeven = ({}) => {
   return (
     <Page next="/page-8" prev="/page-6" title="Build a center of excellence">
       <First noPrompt>
-        <HeadlineBlock dark center>
+        <HeadlineBlock dark center className="mob-no-padding mob-first">
           <img src="../assets/img/practice3-full.jpg" alt="" />
         </HeadlineBlock>
         <HeadlineBlock>
@@ -61,7 +61,7 @@ const pageSeven = ({}) => {
             process-based challenges that can derail cloud initiatives.
           </p>
         </div>
-        <div className="empty-black">
+        <div className="empty-black mob-no-padding mob-first">
           <img src="../assets/img/secondary3.jpg" alt="" />
         </div>
       </Section>

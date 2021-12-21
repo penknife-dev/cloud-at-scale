@@ -32,13 +32,13 @@ const pageSix = ({}) => {
           </h1>
         </HeadlineBlock>
 
-        <HeadlineBlock dark center>
+        <HeadlineBlock dark center className="mob-no-padding mob-first">
           <img src="../assets/img/practice2-full.jpg" alt="" />
         </HeadlineBlock>
       </First>
 
       <Section>
-        <div className="empty-black">
+        <div className="empty-black mob-no-padding mob-first">
           <img src="../assets/img/secondary2.jpg" alt="" />
         </div>
 

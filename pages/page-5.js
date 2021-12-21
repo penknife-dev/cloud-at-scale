@@ -16,7 +16,7 @@ const pageFive = ({}) => {
       title="Adopt a cloud-native, everything-as-cloud approach"
     >
       <First noPrompt>
-        <HeadlineBlock dark center>
+        <HeadlineBlock dark center className="mob-no-padding mob-first">
           <img src="../assets/img/practice1-full.jpg" alt="" />
         </HeadlineBlock>
 
@@ -70,7 +70,7 @@ const pageFive = ({}) => {
             enterprise-wide cloud adoption.
           </p>
         </div>
-        <div className="empty-black">
+        <div className="empty-black mob-no-padding">
           <img src="../assets/img/secondary1.jpg" alt="" />
         </div>
         {/* <Parallax bg="../assets/img/practice1-full.jpg">jcuj</Parallax> */}

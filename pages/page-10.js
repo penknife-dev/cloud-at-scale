@@ -32,13 +32,13 @@ const pageTen = ({}) => {
             </div>
           </h1>
         </HeadlineBlock>
-        <HeadlineBlock dark center>
+        <HeadlineBlock dark center className="mob-no-padding mob-first">
           <img src="../assets/img/accountability1.jpg" alt="" />
         </HeadlineBlock>
       </First>
 
       <Section>
-        <div className="empty-black">
+        <div className="empty-black mob-no-padding mob-first">
           <img src="../assets/img/meeting1.jpg" alt="" />
         </div>
         <div>
