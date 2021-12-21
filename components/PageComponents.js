@@ -67,14 +67,17 @@ export const Navbar = ({ next, prev, title, isMenu }) => {
         >
           <img src="../assets/img/circle-help.svg" alt="" />
         </div>
-        <div
+        <div className="a-icon">
+          <img src="../assets/img/amdocs-a.svg" alt="" />
+        </div>
+        {/* <div
           className="searcher"
           onClick={() => {
             searchState.setOpen();
           }}
         >
           <img src="../assets/img/search.svg" alt="" />
-        </div>
+        </div> */}
       </div>
     </Navigation>
   );
@@ -213,6 +216,7 @@ const Navigation = styled.nav`
       display: block;
       width: 30px;
       height: 30px;
+      /* margin-right: 30px; */
       /* background: url("../assets/img/search.svg") no-repeat center center;
       background-size: cover; */
       cursor: pointer;
@@ -220,6 +224,12 @@ const Navigation = styled.nav`
         display: block;
         width: 100%;
       }
+    }
+
+    .a-icon {
+      display: block;
+      width: 45px;
+      height: 45px;
     }
   }
 `;
@@ -518,6 +528,7 @@ export const Menu = () => {
         <Link href="/page-10">
           <a>
             <div
+              id="last"
               onMouseEnter={() => {
                 menuImage.set("page-10");
               }}
@@ -595,6 +606,10 @@ const MenuContainer = styled.div`
 
   div {
     cursor: pointer;
+
+    &#last {
+      padding-bottom: 50px;
+    }
   }
 
   h1 {
@@ -622,6 +637,7 @@ const MenuHalf = styled.div`
 
   &.pages {
     padding: 3em;
+    /* padding-bottom: 50px; */
   }
 
   .selected-img {
@@ -1129,7 +1145,11 @@ export const Footer = ({ prev, next }) => {
         </a>
         <p>© 2022 Amdocs</p>
       </div>
+
       <div className="inner-nav">
+        <div className="footer-logo">
+          <img src="../assets/img/logo-footer.svg" alt="" />
+        </div>
         <Link href={prev}>
           <a>
             <div
@@ -1194,6 +1214,12 @@ const FooterBar = styled.footer`
     opacity: 0 !important;
     visibility: hidden !important;
     display: none;
+  }
+
+  .footer-logo {
+    width: 180px;
+    margin-right: 40px;
+    align-self: center;
   }
 
   .socials {
