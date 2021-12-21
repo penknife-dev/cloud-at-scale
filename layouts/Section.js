@@ -2,12 +2,8 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
-const Section = ({ children, dark, alt }) => {
+const Section = ({ children, dark, alt, col }) => {
   const router = useRouter();
-
-  useEffect(() => {
-    console.log(router);
-  }, []);
 
   return (
     <SectionContainer
@@ -15,6 +11,7 @@ const Section = ({ children, dark, alt }) => {
       className={dark ? "dark" : null}
       dark={dark}
       alt={alt}
+      col={col}
     >
       {children}
     </SectionContainer>
@@ -24,6 +21,8 @@ const Section = ({ children, dark, alt }) => {
 const SectionContainer = styled.section`
   display: flex;
   position: relative;
+  flex-direction: ${(props) => (props.col ? "column" : "row")};
+  padding-top: ${(props) => (props.col ? "60px" : "0px")};
 
   div {
     flex: 1;
