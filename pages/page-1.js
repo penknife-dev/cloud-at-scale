@@ -11,7 +11,7 @@ import { DownPrompt, Touch } from "../components/Icons";
 
 import { useIsFirst } from "../state/store";
 
-const pageOne = ({}) => {
+const PageOne = ({}) => {
   const firstState = useIsFirst();
 
   useEffect(() => {
@@ -170,4 +170,4 @@ const SwipeIntro = styled.div`
   }
 `;
 
-export default pageOne;
+export default PageOne;
