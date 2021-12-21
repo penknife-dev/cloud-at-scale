@@ -34,6 +34,7 @@ const pageEleven = ({}) => {
               style={{ fontWeight: "bold", color: "rgba(246,183,75,1)" }}
               target="_blank"
               href="https://www.amdocs.com/"
+              rel="noreferrer"
             >
               www.amdocs.com
             </a>
