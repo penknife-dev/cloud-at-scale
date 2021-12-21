@@ -46,6 +46,20 @@ const FirstContainer = styled.section`
   overflow: hidden;
   display: flex;
   position: relative;
+
+  @media (max-width: 780px) {
+    flex-direction: column;
+    height: fit-content;
+    /* top: 60px; */
+
+    div {
+      order: 1;
+
+      &.mob-first {
+        order: 2;
+      }
+    }
+  }
 `;
 
 export default First;
