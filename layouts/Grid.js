@@ -20,6 +20,12 @@ const GridArea = styled.section`
   grid-gap: 30px;
   padding: 3em;
 
+  @media (max-width: 780px) {
+    padding: 1em;
+    display: block;
+    background: #000;
+  }
+
   div {
     padding: 0 !important;
     background: ${(props) => (props.dark ? "#000 !important" : "#fff")};
