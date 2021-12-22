@@ -16,7 +16,7 @@ yarn dev
 npm run dev
 ```
 
-### Make sure the correct endpoint is set in the next config before building and exporting
+### Make sure the correct endpoint is set in the next config before building and exporting (if you are statically building to serve on your own server)
 
 In next.config.js
 
@@ -37,4 +37,5 @@ npm run build
 
 To update or create a new page, see the 'pages' folder.
 
-Every page is made up from a default page template, contating individual page parts which can be found under '/components/PageComponents'.
+Every page is made up from a default page template, contating individual page parts which can be found under
+`/components/PageComponents'`
