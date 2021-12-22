@@ -1,7 +1,11 @@
+// core
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
+/* -------------------------------------------------------------------------- */
+/*                                start section                               */
+/* -------------------------------------------------------------------------- */
 const Section = ({ children, dark, alt, col }) => {
   const router = useRouter();
 
@@ -188,3 +192,7 @@ const SectionContainer = styled.section`
 `;
 
 export default Section;
+
+/* -------------------------------------------------------------------------- */
+/*                                 end section                                */
+/* -------------------------------------------------------------------------- */

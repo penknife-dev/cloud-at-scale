@@ -1,3 +1,9 @@
+/*
+   This file is the default page template.
+   See below in the return how the individual components make up a default page.
+*/
+
+// core
 import React, { Fragment, useEffect, useCallback } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -7,19 +13,25 @@ import { useLongPress } from "use-long-press";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
+// state
 import { useIsFoward } from "../state/store";
 
+// page components
 import {
   Navbar,
   Menu,
   PageTrans,
   SearchMenu,
   HelpMenu,
-  NavArrows,
   Footer,
 } from "../components/PageComponents";
 
 gsap.registerPlugin(ScrollTrigger);
+
+/* -------------------------------------------------------------------------- */
+/*                                 start page                                 */
+/* -------------------------------------------------------------------------- */
+// For every page layout, take its passed props and apply them to the current page
 
 const Page = ({ children, next, prev, title, isFoward, isMenu }) => {
   const router = useRouter();
@@ -91,3 +103,7 @@ const Page = ({ children, next, prev, title, isFoward, isMenu }) => {
 };
 
 export default Page;
+
+/* -------------------------------------------------------------------------- */
+/*                                  end page                                  */
+/* -------------------------------------------------------------------------- */

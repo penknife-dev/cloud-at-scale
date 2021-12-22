@@ -1,6 +1,13 @@
+// core
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+
+/* -------------------------------------------------------------------------- */
+/*                                 start grid                                 */
+/* -------------------------------------------------------------------------- */
+// Used to easily create a flexible grid layout.
+// Always provide children divs and set the colums by passing 'count' props
 
 const Grid = ({ children, count, dark }) => {
   return (
@@ -37,3 +44,7 @@ const GridArea = styled.section`
 `;
 
 export default Grid;
+
+/* -------------------------------------------------------------------------- */
+/*                                  end grid                                  */
+/* -------------------------------------------------------------------------- */

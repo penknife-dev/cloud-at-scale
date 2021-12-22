@@ -1,3 +1,12 @@
+/*
+   This file contains all raw code svg that needs manipulating.
+
+   Before exporting svg code, check it is react compliant or use a converter tool:
+   https://react-svgr.com/playground/
+
+*/
+
+// core
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -7,35 +16,6 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(DrawSVGPlugin);
 
 export const Tree = () => {
-  useEffect(() => {
-    // gsap.from(".tree-item", {
-    //   display: "none",
-    //   drawSVG: 0,
-    //   delay: 0.5,
-    //   duration: 4,
-    //   scrollTrigger: {
-    //     trigger: ".dark",
-    //     pin: false,
-    //     start: "top center",
-    //     markers: false,
-    //     toggleActions: "play none none reverse",
-    //   },
-    // });
-    // gsap.from(".spread-item", {
-    //   display: "none",
-    //   drawSVG: 0,
-    //   delay: 0.5,
-    //   duration: 4,
-    //   scrollTrigger: {
-    //     trigger: ".dark",
-    //     pin: false,
-    //     start: "top center",
-    //     markers: false,
-    //     toggleActions: "play none none reverse",
-    //   },
-    // });
-  }, []);
-
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

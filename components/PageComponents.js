@@ -1,4 +1,10 @@
-// this file contains all the parts that make up a content page
+/*
+   This file contains all the parts that make up a default core content page.
+   Add your own page parts and export them as a function in this file.
+   Alternatively, individual parts can be pulled from this file, see 'index.js' / home page for example.
+*/
+
+// core
 import React, { Fragment, useEffect, useCallback } from "react";
 import { useState } from "@hookstate/core";
 import { motion } from "framer-motion";
@@ -7,11 +13,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useLongPress } from "use-long-press";
 import { BrowserView, MobileView } from "react-device-detect";
-
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 
+// state
 import {
   useIsFoward,
   useIsMenuOpen,
@@ -22,7 +28,11 @@ import {
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 
-// Nav / toolbar to be on every page
+/* -------------------------------------------------------------------------- */
+/*                             start nav / toolbar                            */
+/* -------------------------------------------------------------------------- */
+// To be included on every page - provides acces
+
 export const Navbar = ({ next, prev, title, isMenu }) => {
   const router = useRouter();
   const menuState = useIsMenuOpen();
@@ -261,9 +271,15 @@ const Navigation = styled.nav`
   }
 `;
 
-// end navbar
+/* -------------------------------------------------------------------------- */
+/*                                 end navbar                                 */
+/* -------------------------------------------------------------------------- */
 
+/* -------------------------------------------------------------------------- */
+/*                       start page transition container                      */
+/* -------------------------------------------------------------------------- */
 // The whole container for the page, controls the transitions in and out
+
 export const PageTrans = ({ children, isFoward }) => {
   const fowardState = useIsFoward();
 
@@ -316,9 +332,15 @@ const PageContentArea = styled.div`
   /* padding: 3em; */
 `;
 
-// end page container
+/* -------------------------------------------------------------------------- */
+/*                             end page container                             */
+/* -------------------------------------------------------------------------- */
 
+/* -------------------------------------------------------------------------- */
+/*                                 start menu                                 */
+/* -------------------------------------------------------------------------- */
 // The fullscreen menu for quick access to individual pages. is activated via the burger toggle in the navbar
+
 export const Menu = () => {
   const menuState = useIsMenuOpen();
   const fowardState = useIsFoward();
@@ -420,7 +442,7 @@ export const Menu = () => {
               onClick={closeMenu}
             >
               {" "}
-              <h1>page 1</h1>
+              <h1>Moving your bank to the cloud: the path to success</h1>
             </div>
           </a>
         </Link>
@@ -436,7 +458,7 @@ export const Menu = () => {
               onClick={closeMenu}
             >
               {" "}
-              <h1>page 2</h1>
+              <h1>Cloud unchecked: growing pains and risks</h1>
             </div>
           </a>
         </Link>
@@ -452,7 +474,7 @@ export const Menu = () => {
               onClick={closeMenu}
             >
               {" "}
-              <h1>page 3</h1>
+              <h1>Four top risks of ad hoc cloud use</h1>
             </div>
           </a>
         </Link>
@@ -468,7 +490,7 @@ export const Menu = () => {
               onClick={closeMenu}
             >
               {" "}
-              <h1>page 4</h1>
+              <h1>Essential cloud best practices for banks</h1>
             </div>
           </a>
         </Link>
@@ -484,7 +506,7 @@ export const Menu = () => {
               onClick={closeMenu}
             >
               {" "}
-              <h1>page 5</h1>
+              <h1>Best practice #1</h1>
             </div>
           </a>
         </Link>
@@ -500,7 +522,7 @@ export const Menu = () => {
               onClick={closeMenu}
             >
               {" "}
-              <h1>page 6</h1>
+              <h1>Best practice #2</h1>
             </div>
           </a>
         </Link>
@@ -516,7 +538,7 @@ export const Menu = () => {
               onClick={closeMenu}
             >
               {" "}
-              <h1>page 7</h1>
+              <h1>Best practice #3</h1>
             </div>
           </a>
         </Link>
@@ -532,7 +554,7 @@ export const Menu = () => {
               onClick={closeMenu}
             >
               {" "}
-              <h1>page 8</h1>
+              <h1>Best practice #4</h1>
             </div>
           </a>
         </Link>
@@ -548,14 +570,13 @@ export const Menu = () => {
               onClick={closeMenu}
             >
               {" "}
-              <h1>page 9</h1>
+              <h1>Best practice #5</h1>
             </div>
           </a>
         </Link>
         <Link href="/page-10">
           <a>
             <div
-              id="last"
               onMouseEnter={() => {
                 menuImage.set("page-10");
               }}
@@ -565,7 +586,21 @@ export const Menu = () => {
               onClick={closeMenu}
             >
               {" "}
-              <h1>page 10</h1>
+              <h1>An accountability ally for cloud at scale</h1>
+            </div>
+          </a>
+        </Link>
+        <Link href="/page-11">
+          <a>
+            <div
+              id="last"
+              onMouseLeave={() => {
+                menuImage.set("");
+              }}
+              onClick={closeMenu}
+            >
+              {" "}
+              <h1>About Amdocs</h1>
             </div>
           </a>
         </Link>
@@ -650,9 +685,11 @@ const MenuContainer = styled.div`
   h1 {
     font-family: "MarkPro-ExtraLight";
     font-weight: 200;
-    margin: 0;
-    font-size: 3em;
+    margin: 15px 0;
+    font-size: 2.2em;
+    line-height: 1;
     transition: all 0.5s ease;
+    max-width: 80%;
 
     @media (max-width: 780px) {
       font-size: 2em;
@@ -734,9 +771,15 @@ const MenuHalf = styled.div`
   }
 `;
 
-// end menu
+/* -------------------------------------------------------------------------- */
+/*                                  end menu                                  */
+/* -------------------------------------------------------------------------- */
 
+/* -------------------------------------------------------------------------- */
+/*                              start nav arrows                              */
+/* -------------------------------------------------------------------------- */
 // The arrows that go from page to page
+
 export const NavArrows = ({ next, prev }) => {
   const fowardState = useIsFoward();
   const router = useRouter();
@@ -884,7 +927,13 @@ const NextArrow = styled.div`
 
 const PrevArrow = styled(NextArrow)``;
 
-// end nav arrows
+/* -------------------------------------------------------------------------- */
+/*                               end nav arrows                               */
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/*                              start search menu                             */
+/* -------------------------------------------------------------------------- */
 
 // the search menu allows users to seacrh content by keywords / content
 export const SearchMenu = () => {
@@ -982,9 +1031,15 @@ const SearchMenuContainer = styled.div`
   }
 `;
 
-// end search menu
+/* -------------------------------------------------------------------------- */
+/*                               end search menu                              */
+/* -------------------------------------------------------------------------- */
 
+/* -------------------------------------------------------------------------- */
+/*                               start help menu                              */
+/* -------------------------------------------------------------------------- */
 // the help menu for when users get stuck
+
 export const HelpMenu = () => {
   const helpState = useIsHelpOpen();
 
@@ -1104,10 +1159,17 @@ const HelpContainer = styled.div`
     }
   }
 `;
-//  end help menu
 
+/* -------------------------------------------------------------------------- */
+/*                                end help menu                               */
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/*                                start footer                                */
+/* -------------------------------------------------------------------------- */
 // footer / bottom bar to be included on every content page
 // only to be visible when user hits bottom of page
+
 export const Footer = ({ prev, next }) => {
   const router = useRouter();
   const fowardState = useIsFoward();
@@ -1324,4 +1386,7 @@ const FooterBar = styled.footer`
     }
   }
 `;
-// end footer / bottom bar
+
+/* -------------------------------------------------------------------------- */
+/*                                 end footer                                 */
+/* -------------------------------------------------------------------------- */

@@ -1,12 +1,20 @@
-import React from "react";
+// core
 import { createState, useState } from "@hookstate/core";
 
+// set state var to refer back to
 const isFoward = createState(true);
 const isFirst = createState(true);
 const isMenuOpen = createState(false);
 const isSearchOpen = createState(false);
 const isHelpOpen = createState(false);
 
+/*
+   All states are exported as a object containing various setter and getter functions
+   Once you have imported to the page / file you need, you can create a var to refer back to then call the functions.
+   For example isMenuOpen.setOpen() will change the state to true so when bound to a function or click event, the menu will open
+*/
+
+// determines wehter a page is transitioning foward or backward
 export const useIsFoward = () => {
   const state = useState(isFoward);
 
@@ -23,6 +31,7 @@ export const useIsFoward = () => {
   };
 };
 
+// determines if the users is on their first visit on page 1 - specifically for the mobile navigation prompt
 export const useIsFirst = () => {
   const fstate = useState(isFirst);
 
@@ -39,6 +48,7 @@ export const useIsFirst = () => {
   };
 };
 
+// determines if the menu is open or not
 export const useIsMenuOpen = () => {
   const mstate = useState(isMenuOpen);
 
@@ -71,6 +81,7 @@ export const useIsSearchOpen = () => {
   };
 };
 
+// determines if the help menu is open or not
 export const useIsHelpOpen = () => {
   const hstate = useState(isHelpOpen);
 

@@ -1,7 +1,13 @@
+// core
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
+
+/* -------------------------------------------------------------------------- */
+/*                            start headline block                            */
+/* -------------------------------------------------------------------------- */
+// USed to create the two halfs inside a 'First' layout block
 
 const HeadlineBlock = ({
   children,
@@ -176,3 +182,7 @@ const Headline = styled.div`
 `;
 
 export default HeadlineBlock;
+
+/* -------------------------------------------------------------------------- */
+/*                             end headline block                             */
+/* -------------------------------------------------------------------------- */
