@@ -16,7 +16,16 @@ yarn dev
 npm run dev
 ```
 
-Make sure the correct endpoint is set in the next config before building and exporting
+### Make sure the correct endpoint is set in the next config before building and exporting
+
+In next.config.js
+
+```bash
+assetPrefix: "path/to/domain",
+basePath: "path/to/domain",
+```
+
+Then
 
 ```bash
 yarn build
