@@ -32,3 +32,70 @@ a {
   top: 45px;
   right: -10px;
 }
+
+#cloud-tick1 {
+  position: absolute;
+  top: -75px;
+  right: 50%;
+  transform: translateX(50%);
+  width: 190px;
+  z-index: 100;
+}
+
+#cloud-tick2 {
+  position: absolute;
+  top: 100px;
+  right: 59%;
+  transform: translateX(50%);
+  width: 250px;
+  z-index: 100;
+}
+
+#cloud-tick3 {
+  position: absolute;
+  top: -23px;
+  right: 65%;
+  transform: translateX(50%);
+  width: 140px;
+  z-index: 100;
+}
+
+.empty-black {
+  background: #000 !important;
+}
+
+.empty-black::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 780px) {
+  .swipeable {
+    position: relative;
+    top: 60px;
+  }
+
+  #cloud-tick1 {
+    display: none;
+  }
+
+  #cloud-tick2 {
+    display: none;
+  }
+
+  #cloud-tick3 {
+    display: none;
+  }
+
+  .tree-graphic,
+  .spread-graphic {
+    display: none;
+  }
+}

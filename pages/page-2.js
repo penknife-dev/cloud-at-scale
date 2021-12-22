@@ -38,7 +38,7 @@ const pageTwo = ({}) => {
           </h1>
         </HeadlineBlock>
 
-        <HeadlineBlock overlay center>
+        <HeadlineBlock overlay center className="mob-no-padding mob-first">
           <img src="../assets/img/cloud3.jpg" alt="" />
         </HeadlineBlock>
       </First>

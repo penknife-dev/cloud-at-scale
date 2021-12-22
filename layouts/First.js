@@ -1,3 +1,4 @@
+// core
 import React, { useEffect, useeffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
@@ -5,6 +6,12 @@ import { gsap } from "gsap";
 import { DrawSVGPlugin } from "gsap/dist/DrawSVGPlugin";
 
 gsap.registerPlugin(DrawSVGPlugin);
+
+/* -------------------------------------------------------------------------- */
+/*                             start first section                            */
+/* -------------------------------------------------------------------------- */
+// Used as a full window height container, typically at the top of each page.
+// Can be used anywhere in the page to provide a full height section.
 
 const First = ({ children, direction, noPrompt }) => {
   useEffect(() => {
@@ -16,15 +23,6 @@ const First = ({ children, direction, noPrompt }) => {
       duration: 3,
       ease: "Expo.easInOut",
     });
-    // tl.to(
-    //   ".down-page",
-    //   {
-    //     y: -1,
-    //     repeat: -1,
-    //     yoyo: true,
-    //   },
-    //   2
-    // );
     tl.to(
       ".down-page-text",
       {
@@ -46,6 +44,23 @@ const FirstContainer = styled.section`
   overflow: hidden;
   display: flex;
   position: relative;
+
+  @media (max-width: 780px) {
+    flex-direction: column;
+    height: fit-content;
+    /* top: 60px; */
+
+    div {
+      order: 1;
+
+      &.mob-first {
+        order: 2;
+      }
+    }
+  }
 `;
 
 export default First;
+/* -------------------------------------------------------------------------- */
+/*                              end first section                             */
+/* -------------------------------------------------------------------------- */

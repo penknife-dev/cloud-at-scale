@@ -4,10 +4,30 @@ import Page from "../layouts/Page";
 import First from "../layouts/First";
 import HeadlineBlock from "../layouts/HeadlineBlock";
 import Section from "../layouts/Section";
+import styled from "styled-components";
+import { gsap } from "gsap";
 
-import { DownPrompt } from "../components/Icons";
+import { DownPrompt, Touch } from "../components/Icons";
 
-const pageOne = ({}) => {
+import { useIsFirst } from "../state/store";
+
+const PageOne = ({}) => {
+  const firstState = useIsFirst();
+
+  useEffect(() => {
+    if (firstState.get()) {
+      gsap.to("#swipe-hand", { x: -20, yoyo: true, repeat: -1 });
+      gsap.to("#swipe-help", { autoAlpha: 0, display: "none", delay: 3 });
+    } else {
+      gsap.to("#swipe-hand", { autoAlpha: 0, display: "none" });
+      gsap.to("#swipe-help", { autoAlpha: 0, display: "none" });
+    }
+
+    return () => {
+      firstState.notFirst();
+    };
+  }, [firstState.get()]);
+
   return (
     <Page
       next="/page-2"
@@ -15,12 +35,17 @@ const pageOne = ({}) => {
       title="Moving your
     bank to the cloud"
     >
+      <SwipeIntro id="swipe-help" className={firstState.get() ? "first" : null}>
+        <h1>Swipe with one finger to navigate</h1>
+        <Touch />
+        <h1>Press and hold anywhere to go to start</h1>
+      </SwipeIntro>
       <First noPrompt>
-        <HeadlineBlock overlay>
+        <HeadlineBlock overlay className="mob-no-padding mob-first">
           <img src="../assets/img/home-cover.jpg" />
         </HeadlineBlock>
-        <HeadlineBlock>
-          <h1 className="first-title">
+        <HeadlineBlock className="">
+          <h1 className="first-title ">
             <div>
               <span className="staggerup">Moving your</span>
             </div>
@@ -73,12 +98,16 @@ const pageOne = ({}) => {
           </p>
         </div>
 
-        <div>
+        <div className="mob-no-padding">
           <img src="../assets/img/cloud2.jpg" alt="" />
         </div>
       </Section>
 
       <Section dark>
+        <img id="cloud-tick1" src="../assets/img/cloud-tick.svg" alt="" />
+        <img id="cloud-tick2" src="../assets/img/cloud-tick.svg" alt="" />
+        <img id="cloud-tick3" src="../assets/img/cloud-tick.svg" alt="" />
+
         <div>
           <h1>
             Not another <br /> proof of
@@ -104,4 +133,41 @@ const pageOne = ({}) => {
   );
 };
 
-export default pageOne;
+const SwipeIntro = styled.div`
+  display: none;
+
+  @media (max-width: 780px) {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.8);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3em;
+    color: #fff;
+
+    &.first {
+      display: flex;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    svg {
+      display: block;
+      margin: 0 auto;
+      width: 60%;
+    }
+  }
+`;
+
+export default PageOne;

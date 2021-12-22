@@ -1,4 +1,10 @@
-// this file contains all the parts that make up a content page
+/*
+   This file contains all the parts that make up a default core content page.
+   Add your own page parts and export them as a function in this file.
+   Alternatively, individual parts can be pulled from this file, see 'index.js' / home page for example.
+*/
+
+// core
 import React, { Fragment, useEffect, useCallback } from "react";
 import { useState } from "@hookstate/core";
 import { motion } from "framer-motion";
@@ -6,11 +12,12 @@ import styled from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useLongPress } from "use-long-press";
-
+import { BrowserView, MobileView } from "react-device-detect";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 
+// state
 import {
   useIsFoward,
   useIsMenuOpen,
@@ -21,7 +28,11 @@ import {
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 
-// Nav / toolbar to be on every page
+/* -------------------------------------------------------------------------- */
+/*                             start nav / toolbar                            */
+/* -------------------------------------------------------------------------- */
+// To be included on every page - provides acces
+
 export const Navbar = ({ next, prev, title, isMenu }) => {
   const router = useRouter();
   const menuState = useIsMenuOpen();
@@ -48,11 +59,11 @@ export const Navbar = ({ next, prev, title, isMenu }) => {
 
       <div className="part">
         <div className="page-count">
-          {router.pathname.replace("/page-", "")}/3
+          {router.pathname.replace("/page-", "")}/11
         </div>
       </div>
 
-      <div className="part">Go bigger and faster with cloud</div>
+      <div className="part doc-title">Go bigger and faster with cloud</div>
 
       <div className="tools">
         <div className="part">
@@ -67,14 +78,24 @@ export const Navbar = ({ next, prev, title, isMenu }) => {
         >
           <img src="../assets/img/circle-help.svg" alt="" />
         </div>
-        <div
+        <a
+          style={{ fontWeight: "bold", color: "rgba(246,183,75,1)" }}
+          target="_blank"
+          href="https://www.amdocs.com/"
+          rel="noreferrer"
+        >
+          <div className="a-icon">
+            <img src="../assets/img/amdocs-a.svg" alt="" />
+          </div>
+        </a>
+        {/* <div
           className="searcher"
           onClick={() => {
             searchState.setOpen();
           }}
         >
           <img src="../assets/img/search.svg" alt="" />
-        </div>
+        </div> */}
       </div>
     </Navigation>
   );
@@ -92,6 +113,10 @@ const Navigation = styled.nav`
   background: rgba(0, 0, 0, 1);
   padding: 0 30px;
   z-index: 100;
+
+  @media (max-width: 780px) {
+    padding: 0 10px;
+  }
 
   &::after {
     position: absolute;
@@ -123,6 +148,12 @@ const Navigation = styled.nav`
     margin: 0 10px;
     justify-content: center;
     align-items: center;
+
+    &.doc-title {
+      @media (max-width: 780px) {
+        display: none;
+      }
+    }
   }
 
   .burger {
@@ -139,6 +170,11 @@ const Navigation = styled.nav`
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     cursor: pointer;
+
+    @media (max-width: 780px) {
+      padding-left: 0;
+      width: 45px;
+    }
 
     span {
       width: 85%;
@@ -192,6 +228,10 @@ const Navigation = styled.nav`
 
     .page-title {
       margin-right: 30px;
+
+      @media (max-width: 780px) {
+        display: none;
+      }
     }
 
     .helper {
@@ -213,6 +253,7 @@ const Navigation = styled.nav`
       display: block;
       width: 30px;
       height: 30px;
+      /* margin-right: 30px; */
       /* background: url("../assets/img/search.svg") no-repeat center center;
       background-size: cover; */
       cursor: pointer;
@@ -221,12 +262,24 @@ const Navigation = styled.nav`
         width: 100%;
       }
     }
+
+    .a-icon {
+      display: block;
+      width: 45px;
+      height: 45px;
+    }
   }
 `;
 
-// end navbar
+/* -------------------------------------------------------------------------- */
+/*                                 end navbar                                 */
+/* -------------------------------------------------------------------------- */
 
+/* -------------------------------------------------------------------------- */
+/*                       start page transition container                      */
+/* -------------------------------------------------------------------------- */
 // The whole container for the page, controls the transitions in and out
+
 export const PageTrans = ({ children, isFoward }) => {
   const fowardState = useIsFoward();
 
@@ -279,9 +332,15 @@ const PageContentArea = styled.div`
   /* padding: 3em; */
 `;
 
-// end page container
+/* -------------------------------------------------------------------------- */
+/*                             end page container                             */
+/* -------------------------------------------------------------------------- */
 
+/* -------------------------------------------------------------------------- */
+/*                                 start menu                                 */
+/* -------------------------------------------------------------------------- */
 // The fullscreen menu for quick access to individual pages. is activated via the burger toggle in the navbar
+
 export const Menu = () => {
   const menuState = useIsMenuOpen();
   const fowardState = useIsFoward();
@@ -296,20 +355,70 @@ export const Menu = () => {
     switch (menuImage.get()) {
       case "page-1":
         gsap.to("#si-1", { y: 0 });
-        gsap.to("#si-2,#si-3", { y: "-100%" });
+        gsap.to("#si-2,#si-3,#si-4,#si-5,#si-6,#si-7,#si-8,#si-9,#si-10", {
+          y: "-100%",
+        });
         break;
       case "page-2":
         gsap.to("#si-2", { y: 0 });
-        gsap.to("#si-1,#si-3", { y: "-100%" });
-
+        gsap.to("#si-1,#si-3,#si-4,#si-5,#si-6,#si-7,#si-8,#si-9,#si-10", {
+          y: "-100%",
+        });
         break;
       case "page-3":
         gsap.to("#si-3", { y: 0 });
-        gsap.to("#si-1,#si-2", { y: "-100%" });
-
+        gsap.to("#si-1,#si-2,#si-4,#si-5,#si-6,#si-7,#si-8,#si-9,#si-10", {
+          y: "-100%",
+        });
         break;
+      case "page-4":
+        gsap.to("#si-4", { y: 0 });
+        gsap.to("#si-1,#si-2,#si-3,#si-5,#si-6,#si-7,#si-8,#si-9,#si-10", {
+          y: "-100%",
+        });
+        break;
+      case "page-5":
+        gsap.to("#si-5", { y: 0 });
+        gsap.to("#si-1,#si-2,#si-3,#si-4,#si-6,#si-7,#si-8,#si-9,#si-10", {
+          y: "-100%",
+        });
+        break;
+      case "page-6":
+        gsap.to("#si-6", { y: 0 });
+        gsap.to("#si-1,#si-2,#si-3,#si-4,#si-5,#si-7,#si-8,#si-9,#si-10", {
+          y: "-100%",
+        });
+        break;
+      case "page-7":
+        gsap.to("#si-7", { y: 0 });
+        gsap.to("#si-1,#si-2,#si-3,#si-4,#si-5,#si-6,#si-8,#si-9,#si-10", {
+          y: "-100%",
+        });
+        break;
+      case "page-8":
+        gsap.to("#si-8", { y: 0 });
+        gsap.to("#si-1,#si-2,#si-3,#si-4,#si-5,#si-6,#si-7,#si-9,#si-10", {
+          y: "-100%",
+        });
+        break;
+      case "page-9":
+        gsap.to("#si-9", { y: 0 });
+        gsap.to("#si-1,#si-2,#si-3,#si-4,#si-5,#si-6,#si-7,#si-8,#si-10", {
+          y: "-100%",
+        });
+        break;
+      case "page-10":
+        gsap.to("#si-10", { y: 0 });
+        gsap.to("#si-1,#si-2,#si-3,#si-4,#si-5,#si-6,#si-7,#si-8,#si-9", {
+          y: "-100%",
+        });
+        break;
+
       default:
-        gsap.to("#si-1,#si-2,#si-3", { y: "100%" });
+        gsap.to(
+          "#si-1,#si-2,#si-3,#si-4,#si-5,#si-6,#si-7,#si-8,#si-9,#si-10",
+          { y: "100%" }
+        );
         break;
     }
   };
@@ -333,7 +442,7 @@ export const Menu = () => {
               onClick={closeMenu}
             >
               {" "}
-              <h1>page 1</h1>
+              <h1>Moving your bank to the cloud: the path to success</h1>
             </div>
           </a>
         </Link>
@@ -349,7 +458,7 @@ export const Menu = () => {
               onClick={closeMenu}
             >
               {" "}
-              <h1>page 2</h1>
+              <h1>Cloud unchecked: growing pains and risks</h1>
             </div>
           </a>
         </Link>
@@ -365,7 +474,133 @@ export const Menu = () => {
               onClick={closeMenu}
             >
               {" "}
-              <h1>page 3</h1>
+              <h1>Four top risks of ad hoc cloud use</h1>
+            </div>
+          </a>
+        </Link>
+        <Link href="/page-4">
+          <a>
+            <div
+              onMouseEnter={() => {
+                menuImage.set("page-4");
+              }}
+              onMouseLeave={() => {
+                menuImage.set("");
+              }}
+              onClick={closeMenu}
+            >
+              {" "}
+              <h1>Essential cloud best practices for banks</h1>
+            </div>
+          </a>
+        </Link>
+        <Link href="/page-5">
+          <a>
+            <div
+              onMouseEnter={() => {
+                menuImage.set("page-5");
+              }}
+              onMouseLeave={() => {
+                menuImage.set("");
+              }}
+              onClick={closeMenu}
+            >
+              {" "}
+              <h1>Best practice #1</h1>
+            </div>
+          </a>
+        </Link>
+        <Link href="/page-6">
+          <a>
+            <div
+              onMouseEnter={() => {
+                menuImage.set("page-6");
+              }}
+              onMouseLeave={() => {
+                menuImage.set("");
+              }}
+              onClick={closeMenu}
+            >
+              {" "}
+              <h1>Best practice #2</h1>
+            </div>
+          </a>
+        </Link>
+        <Link href="/page-7">
+          <a>
+            <div
+              onMouseEnter={() => {
+                menuImage.set("page-7");
+              }}
+              onMouseLeave={() => {
+                menuImage.set("");
+              }}
+              onClick={closeMenu}
+            >
+              {" "}
+              <h1>Best practice #3</h1>
+            </div>
+          </a>
+        </Link>
+        <Link href="/page-8">
+          <a>
+            <div
+              onMouseEnter={() => {
+                menuImage.set("page-8");
+              }}
+              onMouseLeave={() => {
+                menuImage.set("");
+              }}
+              onClick={closeMenu}
+            >
+              {" "}
+              <h1>Best practice #4</h1>
+            </div>
+          </a>
+        </Link>
+        <Link href="/page-9">
+          <a>
+            <div
+              onMouseEnter={() => {
+                menuImage.set("page-9");
+              }}
+              onMouseLeave={() => {
+                menuImage.set("");
+              }}
+              onClick={closeMenu}
+            >
+              {" "}
+              <h1>Best practice #5</h1>
+            </div>
+          </a>
+        </Link>
+        <Link href="/page-10">
+          <a>
+            <div
+              onMouseEnter={() => {
+                menuImage.set("page-10");
+              }}
+              onMouseLeave={() => {
+                menuImage.set("");
+              }}
+              onClick={closeMenu}
+            >
+              {" "}
+              <h1>An accountability ally for cloud at scale</h1>
+            </div>
+          </a>
+        </Link>
+        <Link href="/page-11">
+          <a>
+            <div
+              id="last"
+              onMouseLeave={() => {
+                menuImage.set("");
+              }}
+              onClick={closeMenu}
+            >
+              {" "}
+              <h1>About Amdocs</h1>
             </div>
           </a>
         </Link>
@@ -379,6 +614,27 @@ export const Menu = () => {
         </div>
         <div className="selected-img" id="si-3">
           <img id="menu-image" src="../assets/img/risk2.jpg" alt="" />
+        </div>
+        <div className="selected-img" id="si-4">
+          <img id="menu-image" src="../assets/img/bank-cover.jpg" alt="" />
+        </div>
+        <div className="selected-img" id="si-5">
+          <img id="menu-image" src="../assets/img/practice1-full.jpg" alt="" />
+        </div>
+        <div className="selected-img" id="si-6">
+          <img id="menu-image" src="../assets/img/practice2-full.jpg" alt="" />
+        </div>
+        <div className="selected-img" id="si-7">
+          <img id="menu-image" src="../assets/img/practice3-full.jpg" alt="" />
+        </div>
+        <div className="selected-img" id="si-8">
+          <img id="menu-image" src="../assets/img/practice4-full.jpg" alt="" />
+        </div>
+        <div className="selected-img" id="si-9">
+          <img id="menu-image" src="../assets/img/practice5-full.jpg" alt="" />
+        </div>
+        <div className="selected-img" id="si-10">
+          <img id="menu-image" src="../assets/img/accountability1.jpg" alt="" />
         </div>
       </MenuHalf>
     </MenuContainer>
@@ -402,24 +658,42 @@ const MenuContainer = styled.div`
   /* padding: 3em; */
   z-index: 1000;
 
+  @media (max-width: 780px) {
+    display: none;
+  }
+
   transform: translateX(-100%);
   transition: all 0.5s ease;
 
   &.open {
     transform: translateX(0);
     transition: all 0.5s ease;
+
+    @media (max-width: 780px) {
+      display: flex;
+    }
   }
 
   div {
     cursor: pointer;
+
+    &#last {
+      padding-bottom: 50px;
+    }
   }
 
   h1 {
     font-family: "MarkPro-ExtraLight";
     font-weight: 200;
-    margin: 0;
-    font-size: 3em;
+    margin: 15px 0;
+    font-size: 2.2em;
+    line-height: 1;
     transition: all 0.5s ease;
+    max-width: 80%;
+
+    @media (max-width: 780px) {
+      font-size: 2em;
+    }
 
     &:hover {
       color: #f6b74b;
@@ -434,10 +708,22 @@ const MenuHalf = styled.div`
   flex: 1;
   position: relative;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  @media (max-width: 780px) {
+    display: block;
+    flex: none;
+    width: 100%;
+  }
 
   &.pages {
     padding: 3em;
+
+    @media (max-width: 780px) {
+      padding: 1em;
+    }
+    /* padding-bottom: 50px; */
   }
 
   .selected-img {
@@ -459,6 +745,10 @@ const MenuHalf = styled.div`
       height: 100%;
       content: "";
       background: rgba(0, 0, 0, 0.5);
+
+      @media (max-width: 780px) {
+        display: none;
+      }
     }
 
     /* opacity: 0;
@@ -474,12 +764,22 @@ const MenuHalf = styled.div`
     bottom: 0;
     width: 100%;
     height: 100%;
+
+    @media (max-width: 780px) {
+      display: none;
+    }
   }
 `;
 
-// end menu
+/* -------------------------------------------------------------------------- */
+/*                                  end menu                                  */
+/* -------------------------------------------------------------------------- */
 
+/* -------------------------------------------------------------------------- */
+/*                              start nav arrows                              */
+/* -------------------------------------------------------------------------- */
 // The arrows that go from page to page
+
 export const NavArrows = ({ next, prev }) => {
   const fowardState = useIsFoward();
   const router = useRouter();
@@ -627,7 +927,13 @@ const NextArrow = styled.div`
 
 const PrevArrow = styled(NextArrow)``;
 
-// end nav arrows
+/* -------------------------------------------------------------------------- */
+/*                               end nav arrows                               */
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/*                              start search menu                             */
+/* -------------------------------------------------------------------------- */
 
 // the search menu allows users to seacrh content by keywords / content
 export const SearchMenu = () => {
@@ -725,9 +1031,15 @@ const SearchMenuContainer = styled.div`
   }
 `;
 
-// end search menu
+/* -------------------------------------------------------------------------- */
+/*                               end search menu                              */
+/* -------------------------------------------------------------------------- */
 
+/* -------------------------------------------------------------------------- */
+/*                               start help menu                              */
+/* -------------------------------------------------------------------------- */
 // the help menu for when users get stuck
+
 export const HelpMenu = () => {
   const helpState = useIsHelpOpen();
 
@@ -744,16 +1056,21 @@ export const HelpMenu = () => {
         </div>
         <div>
           {" "}
-          <video src="../assets/img/help-demo1.mov" controls={true}></video>
+          <video src="../assets/img/help-guide-2.mov" controls={true}></video>
         </div>
         <div className="instructions">
-          <p>
-            The Navigation arrows appear when you scroll to the bottom of the
-            page. Click the arrows to navigate from page to page.
-          </p>
-          <p>Hold the back arrow to go back to the start.</p>
-          <p>Use the hambrger menu to quickly jump from page to the page.</p>
-          <p>Use the search tool to find anything in ths eBook.</p>
+          <BrowserView>
+            <p>
+              The Navigation arrows appear when you scroll to the bottom of the
+              page. Click the arrows to navigate from page to page.
+            </p>
+            <p>Hold the back arrow to go back to the start.</p>
+            <p>Use the hambrger menu to quickly jump from page to the page.</p>
+          </BrowserView>
+          <MobileView>
+            <p>Swipe with one finger to navigate from page to page.</p>
+            <p>Use the hambrger menu to quickly jump from page to the page.</p>
+          </MobileView>
         </div>
       </section>
     </HelpContainer>
@@ -761,7 +1078,7 @@ export const HelpMenu = () => {
 };
 
 const HelpContainer = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -780,6 +1097,11 @@ const HelpContainer = styled.div`
   transform-origin: center center;
   transition: all 0.5s ease;
 
+  @media (max-width: 780px) {
+    padding: 0em;
+    flex-direction: column;
+  }
+
   &.open {
     opacity: 1;
     visibility: visible;
@@ -794,6 +1116,11 @@ const HelpContainer = styled.div`
     flex-direction: row;
     width: 80%;
     position: relative;
+
+    @media (max-width: 780px) {
+      padding: 1em;
+      flex-direction: column;
+    }
 
     div {
       display: flex;
@@ -832,10 +1159,17 @@ const HelpContainer = styled.div`
     }
   }
 `;
-//  end help menu
 
+/* -------------------------------------------------------------------------- */
+/*                                end help menu                               */
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/*                                start footer                                */
+/* -------------------------------------------------------------------------- */
 // footer / bottom bar to be included on every content page
 // only to be visible when user hits bottom of page
+
 export const Footer = ({ prev, next }) => {
   const router = useRouter();
   const fowardState = useIsFoward();
@@ -866,35 +1200,18 @@ export const Footer = ({ prev, next }) => {
     gsap.to("#next-nav-arrow", { opacity: 1 });
   };
 
-  // useEffect(() => {
-  //   gsap.to(".main-footer", {
-  //     autoAlpha: 1,
-  //     y: 0,
-  //     scrollTrigger: {
-  //       trigger: ".dark",
-  //       pin: false,
-  //       start: "top bottom-=80px",
-  //       markers: false,
-  //       toggleActions: "play none none reverse",
-  //     },
-  //   });
-  // });
+  const callback = useCallback((event) => {
+    event.preventDefault();
+    fowardState.setBackward();
+    router.push("/page-1");
+  }, []);
 
-  // useEffect(() => {
-  //   return () => {
-  //     gsap.to(".main-footer", {
-  //       autoAlpha: 1,
-  //       y: 0,
-  //       scrollTrigger: {
-  //         trigger: ".dark",
-  //         pin: false,
-  //         start: "top bottom-=80px",
-  //         markers: false,
-  //         toggleActions: "play none none reverse",
-  //       },
-  //     });
-  //   };
-  // }, []);
+  const bind = useLongPress(callback, {
+    threshold: 500,
+    captureEvent: true,
+    cancelOnMovement: false,
+    detect: "both",
+  });
 
   return (
     <FooterBar
@@ -945,12 +1262,17 @@ export const Footer = ({ prev, next }) => {
         </a>
         <p>© 2022 Amdocs</p>
       </div>
+
       <div className="inner-nav">
+        <div className="footer-logo">
+          <img src="../assets/img/logo-footer.svg" alt="" />
+        </div>
         <Link href={prev}>
           <a>
             <div
               id="prev-nav-arrow"
               className="nav--arrow prev"
+              {...bind}
               onClick={handlePrev}
               onMouseEnter={prevHoverEffect}
               onMouseLeave={prevRevokeEffect}
@@ -1002,6 +1324,10 @@ const FooterBar = styled.footer`
   color: #fff;
   align-items: center;
 
+  @media (max-width: 780px) {
+    display: none;
+  }
+
   opacity: 0;
   visibility: hidden;
   transform: translateY(100px);
@@ -1010,6 +1336,12 @@ const FooterBar = styled.footer`
     opacity: 0 !important;
     visibility: hidden !important;
     display: none;
+  }
+
+  .footer-logo {
+    width: 180px;
+    margin-right: 40px;
+    align-self: center;
   }
 
   .socials {
@@ -1054,4 +1386,7 @@ const FooterBar = styled.footer`
     }
   }
 `;
-// end footer / bottom bar
+
+/* -------------------------------------------------------------------------- */
+/*                                 end footer                                 */
+/* -------------------------------------------------------------------------- */
