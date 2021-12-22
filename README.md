@@ -1,4 +1,6 @@
-# Getting Started
+# An entry point for a new branded amdocs document / whitepaper
+
+## Getting Started
 
 Get the dependencies
 
@@ -33,9 +35,9 @@ yarn build
 npm run build
 ```
 
-# If you are editing the files
+## If you are editing the files
 
-To update or create a new page, see the 'pages' folder.
+To update or create a new page, see the 'pages' folder. Styles are written in the same file as the page / component.
 
-Every page is made up from a default page template, contating individual page parts which can be found under
-`/components/PageComponents'`
+Every page is made up from a default page template, contating individual page parts which can be found under:
+`/components/PageComponents`
