@@ -33,6 +33,9 @@ Then
 yarn build
 # or
 npm run build
+
+# (By default the next export command is also part of the build command, can be changed in package.json)
+
 ```
 
 ## If you are editing the files
