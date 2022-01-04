@@ -43,43 +43,42 @@ const pageTen = ({}) => {
         </div>
         <div>
           <p>
-            At Amdocs, we offer a proven foundation to help banks launch cloud
-            initiatives. Our approach to cloud is based on the best practices
-            outlined in this ebook. Called the Cloud at Scale™ Core Foundations,
-            the Amdocs foundation includes a platform that empowers large
-            enterprises to adopt the cloud quickly while ensuring strict
-            regulatory compliance and security. But cloud is just one aspect of
-            an effective digital strategy.
-          </p>
-          <p>
             Banks are at a critical juncture. They need to create the future of
-            banking for customers and their people by realizing digital-first
-            strategies. The Amdocs team brings together human-centered design,
-            cloud and transformation. These are the key pillars of digital
-            success. This united approach overcomes the complexity to deliver:
+            banking for customers and their people by realizing digital- first
+            strategies. The Amdocs team brings together experience, cloud and
+            culture to accelerate the digital transformation required for
+            success. This united approach empowers banks to:
           </p>
           <p>
             <ul>
               <li>
-                <b>Spectacular digital experiences:</b> Digital user growth
-                grows as banks reimagine banking with market-leading experiences
+                <b>Reimagine digital experiences:</b> Digital user growth
+                increases as banks deliver market-leading digital banking
+                experiences to customers
               </li>
               <li>
-                <b>Cloud at scale:</b> Faster and more predictable software
-                deployment combines with the elasticity of the cloud to increase
-                performance and resiliency while reducing risk
+                <b>Adopt cloud at scale:</b> Faster and more predictable
+                software deployment combines with the elasticity of the cloud to
+                increase performance and resiliency while reducing risk
               </li>
               <li>
-                <b>Continuous transformation:</b> Upskilled and empowered
-                internal teams adopt connected ways of working that accelerate
-                workflows
+                <b>Build a culture of velocity:</b> Upskilled internal teams use
+                Agile methodologies along with AI and automation to enhance
+                speed and quality
               </li>
             </ul>
           </p>
           <p>
-            Talk to the banking specialists at Amdocs about how we can help your
-            bank thrive in the cloud as you reshape banking. 11 Go bigger and
-            faster with cloud
+            <a
+              style={{ color: "#c63f42" }}
+              target="_blank"
+              href="https://www.amdocs.com/contact"
+              rel="noreferrer"
+            >
+              <b>Talk to the banking specialists at Amdocs</b>
+            </a>{" "}
+            about how we can help your bank thrive in the cloud as you reshape
+            banking.
           </p>
         </div>
       </Section>

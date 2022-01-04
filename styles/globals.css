@@ -15,6 +15,10 @@ a {
   box-sizing: border-box;
 }
 
+b {
+  font-family: "MarkPro-Bold";
+}
+
 .tree-graphic {
   height: 440px;
   display: block;
